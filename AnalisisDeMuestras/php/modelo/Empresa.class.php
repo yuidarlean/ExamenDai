@@ -5,13 +5,15 @@ Class Empresa{
     private $nombrempesa;
     private $passwordempresa;
     private $direccionemprsa;
+    private $contacto;
     
-    public function __construct($codigoempresa,$rutempresa,$nombrempresa,$passwordempresa,$direccionempresa) {
+    public function __construct($codigoempresa,$rutempresa,$nombrempresa,$passwordempresa,$direccionempresa, $contacto) {
         $this->codigoempresa = $codigoempresa;
         $this->rutempresa = $rutempresa;
         $this->nombrempesa = $nombrempresa;
         $this->passwordempresa = $passwordempresa;
         $this->direccionemprsa = $direccionempresa;
+        $this->contacto = $contacto;
     }
     
     public function getCodigoempresa() {
@@ -33,6 +35,10 @@ Class Empresa{
     public function getDireccionemprsa() {
         return $this->direccionemprsa;
     }
+    
+    public function getContacto() {
+        return $this->contacto;
+    }
 
     public function setCodigoempresa($codigoempresa) {
         $this->codigoempresa = $codigoempresa;
@@ -52,6 +58,10 @@ Class Empresa{
 
     public function setDireccionemprsa($direccionemprsa) {
         $this->direccionemprsa = $direccionemprsa;
+    }
+    
+    public function setContacto($contacto) {
+        $this->contacto = $contacto;
     }
 
 

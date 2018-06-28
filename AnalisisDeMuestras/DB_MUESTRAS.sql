@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `db_muestras` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `db_muestras`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: db_muestras
@@ -43,15 +41,6 @@ CREATE TABLE `analisismuestras` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `analisismuestras`
---
-
-LOCK TABLES `analisismuestras` WRITE;
-/*!40000 ALTER TABLE `analisismuestras` DISABLE KEYS */;
-/*!40000 ALTER TABLE `analisismuestras` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `contacto`
 --
 
@@ -71,15 +60,6 @@ CREATE TABLE `contacto` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contacto`
---
-
-LOCK TABLES `contacto` WRITE;
-/*!40000 ALTER TABLE `contacto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contacto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `empleado`
 --
 
@@ -89,20 +69,11 @@ DROP TABLE IF EXISTS `empleado`;
 CREATE TABLE `empleado` (
   `rutEmpleado` varchar(10) NOT NULL,
   `nombreEmpleado` varchar(50) NOT NULL,
-  `passwordEmpleado` varchar(45) NOT NULL,
+  `passwordEmpleado` varchar(100) NOT NULL,
   `categoria` varchar(1) NOT NULL,
   PRIMARY KEY (`rutEmpleado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `empleado`
---
-
-LOCK TABLES `empleado` WRITE;
-/*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
-/*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `empresa`
@@ -115,20 +86,11 @@ CREATE TABLE `empresa` (
   `codigoEmpresa` int(11) NOT NULL AUTO_INCREMENT,
   `rutEmpresa` varchar(10) NOT NULL,
   `nombreEmpresa` varchar(30) NOT NULL,
-  `passwordEmpresa` varchar(45) NOT NULL,
+  `passwordEmpresa` varchar(100) NOT NULL,
   `direccionEmpresa` varchar(50) NOT NULL,
   PRIMARY KEY (`codigoEmpresa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `empresa`
---
-
-LOCK TABLES `empresa` WRITE;
-/*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
-/*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `particular`
@@ -140,22 +102,13 @@ DROP TABLE IF EXISTS `particular`;
 CREATE TABLE `particular` (
   `codigoParticular` int(11) NOT NULL AUTO_INCREMENT,
   `rutParticular` varchar(45) NOT NULL,
-  `passwordParticular` varchar(45) NOT NULL,
+  `passwordParticular` varchar(100) NOT NULL,
   `nombreParticular` varchar(45) NOT NULL,
   `direccionParticular` varchar(45) NOT NULL,
   `emailParticular` varchar(45) NOT NULL,
   PRIMARY KEY (`codigoParticular`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `particular`
---
-
-LOCK TABLES `particular` WRITE;
-/*!40000 ALTER TABLE `particular` DISABLE KEYS */;
-/*!40000 ALTER TABLE `particular` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `resultadoanalisis`
@@ -181,15 +134,6 @@ CREATE TABLE `resultadoanalisis` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `resultadoanalisis`
---
-
-LOCK TABLES `resultadoanalisis` WRITE;
-/*!40000 ALTER TABLE `resultadoanalisis` DISABLE KEYS */;
-/*!40000 ALTER TABLE `resultadoanalisis` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `telefono`
 --
 
@@ -203,17 +147,8 @@ CREATE TABLE `telefono` (
   PRIMARY KEY (`idTelefono`,`codigoParticular`),
   KEY `fk_telefono_particular1_idx` (`codigoParticular`),
   CONSTRAINT `fk_telefono_particular1` FOREIGN KEY (`codigoParticular`) REFERENCES `particular` (`codigoParticular`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `telefono`
---
-
-LOCK TABLES `telefono` WRITE;
-/*!40000 ALTER TABLE `telefono` DISABLE KEYS */;
-/*!40000 ALTER TABLE `telefono` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tipoanalisis`
@@ -228,15 +163,6 @@ CREATE TABLE `tipoanalisis` (
   PRIMARY KEY (`idTipoAnalisis`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tipoanalisis`
---
-
-LOCK TABLES `tipoanalisis` WRITE;
-/*!40000 ALTER TABLE `tipoanalisis` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tipoanalisis` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -247,4 +173,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-27 11:25:56
+-- Dump completed on 2018-06-28 12:57:33

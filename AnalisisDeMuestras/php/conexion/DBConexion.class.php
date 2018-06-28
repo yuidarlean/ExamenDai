@@ -1,8 +1,8 @@
 <?php
 
 class DBConexion{
-    private $USER = "root";
-    private $PASSWORD = "";
+    private $USER = "test";
+    private $PASSWORD = "Unisys2016#";
     private $DSN = 'mysql:host=localhost;dbname=db_muestras;charset=utf8';
     
     private static $instancia;

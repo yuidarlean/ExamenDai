@@ -1,6 +1,7 @@
 <?php
     include ('php/base/header.php');
 ?>
+</head>
 <body style="margin-left: 25%; margin-top: 5%;">
         <div class="card card-nav-tabs" style="width: 50%;">
           <div class="card-header card-header-info">
@@ -24,7 +25,7 @@
               </form>
           </div>
           <div class="card-footer">
-            Registrarse
+              <a href="registro.php">Registrarse</a>
           </div>
         </div>    
     </body>

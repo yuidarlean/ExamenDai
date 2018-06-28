@@ -1,5 +1,5 @@
 <?php
-Class contacto {
+Class Contacto {
     private $rutcontacto;
     private $nombreContacto;
     private $emailContacto;
