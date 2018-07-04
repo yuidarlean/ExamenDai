@@ -12,7 +12,7 @@
         <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 
         <!--  Google Maps Plugin    -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJDDhqMzDyo87pj5la5TRcA4TetuO2BEE"></script>
 
         <!-- Chartist JS -->
         <script src="assets/js/plugins/chartist.min.js"></script>
