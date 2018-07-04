@@ -22,3 +22,6 @@
 
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="assets/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>        
+        <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="assets/css/css.css" />
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
