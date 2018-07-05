@@ -1,6 +1,7 @@
 <?php
     include ('php/base/header.php');
 ?>
+<script src="assets/js/recepcion.js" type="text/javascript"></script>
 </head>
     <body>
         <?php
@@ -92,13 +93,17 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="card card-nav-tabs">
-                                                <div class="card-header card-header-">
-                                                    <h5>An&aacute;lisis a realizar:</h5>
+                                                <div class="card-header card-header-info">
+                                                    <h4>An&aacute;lisis a realizar:</h4>
+                                                    <p class="card-category">Seleccione los tipos de an&aacute;lisis que se realizarán a las muestras:</p>
                                                 </div>
-                                                <div class="card-body">
-                                                    Hola
+                                                <div class="card-body" id="tiposanalisis">
+                                                    
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <button type="button" class="btn btn-info" id="btnRegistrarMuestra">Registrar</button>
                                         </div>
                                     </form>
                                 </div>
