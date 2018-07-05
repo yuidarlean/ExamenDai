@@ -1,6 +1,6 @@
 <?php
-include '../dao/EmpresaDAO.class.php';
-include '../dao/ContactoDAO.class.php';
+include '../dao/UsuarioDAO.class.php';
+
 
 if ($_SERVER['REQUEST_METHOD']=='POST'){
     echo json_encode(empresaNuevo());
@@ -12,16 +12,32 @@ function empresaNuevo(){
     
     $password = password_hash($_POST["password"],PASSWORD_DEFAULT);
     
-    $empresa = new Empresa(0, $_POST["rut"], $_POST["nombre"], $password, $_POST["direccion"], 0);
+    $tipo = new TipoUsuario(5, null);
     
-    $empresaDAO = new EmpresaDAO();
-    $idEmpresa = $empresaDAO->ingresar($empresa);
+    $empresa = new Usuario(null, $_POST["rut"], $password, $_POST["nombre"], $_POST["direccion"], $tipo, null);
+    //(0, $_POST["rut"], $_POST["nombre"], $password, $_POST["direccion"], 0);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    $usuarioDAO = new UsuarioDAO();
+    $idEmpresa = $usuarioDAO->IngresarUsuario($empresa);
+    
+    /*if($idEmpresa){ 
+        
+    }
     
     $contacto = new Contacto($_POST["rutcontacto"], $_POST["nombrecontacto"], $_POST["emailcontacto"], $_POST["telefonocontacto"], $idEmpresa);
     $contactoDAO = new ContactoDAO();
+    */
+    //$resp = $contactoDAO->IngresarContacto($contacto);
     
-    $resp = $contactoDAO->IngresarContacto($contacto);
-    return array("resultado"=>$resp);
+    return array("resultado"=>$idEmpresa); 
 }
 
 

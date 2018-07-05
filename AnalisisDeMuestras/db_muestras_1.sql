@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-07-2018 a las 20:18:09
+-- Tiempo de generación: 05-07-2018 a las 16:56:40
 -- Versión del servidor: 10.1.24-MariaDB
 -- Versión de PHP: 7.1.6
 
@@ -111,23 +111,24 @@ INSERT INTO `tipousuario` (`codigoTipo`, `nombresTipo`) VALUES
 CREATE TABLE `usuario` (
   `codigoUsuario` int(11) NOT NULL,
   `rutUsuario` varchar(45) COLLATE utf8_spanish2_ci NOT NULL,
-  `passwordUsuario` varchar(45) COLLATE utf8_spanish2_ci NOT NULL,
+  `passwordUsuario` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   `nombreUsuario` varchar(45) COLLATE utf8_spanish2_ci NOT NULL,
   `direccionUsuario` varchar(45) COLLATE utf8_spanish2_ci NOT NULL,
   `tipoUsuario` int(11) NOT NULL,
-  `categoria` varchar(1) COLLATE utf8_spanish2_ci DEFAULT NULL
+  `estado` int(11) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`codigoUsuario`, `rutUsuario`, `passwordUsuario`, `nombreUsuario`, `direccionUsuario`, `tipoUsuario`, `categoria`) VALUES
-(1, '111111111', '$2y$10$S3H5GaT.aVwJWnGLdhys.uphvEspXTS64nqBQy', 'Dario administrador', 'direccion 1', 1, NULL),
-(2, '222222222', '$2y$10$S3H5GaT.aVwJWnGLdhys.uphvEspXTS64nqBQy', 'Juan Receptor', 'direccion 2', 2, NULL),
-(3, '333333333', '$2y$10$S3H5GaT.aVwJWnGLdhys.uphvEspXTS64nqBQy', 'Maria Tecnica Laboratorista', 'direccion 3', 3, NULL),
-(4, '444444444', '$2y$10$S3H5GaT.aVwJWnGLdhys.uphvEspXTS64nqBQy', 'Teresa Cliente', 'direccion 4', 4, NULL),
-(5, '555555555', '$2y$10$S3H5GaT.aVwJWnGLdhys.uphvEspXTS64nqBQy', 'Lait SA Cliente Emp', 'direccion 5', 5, NULL);
+INSERT INTO `usuario` (`codigoUsuario`, `rutUsuario`, `passwordUsuario`, `nombreUsuario`, `direccionUsuario`, `tipoUsuario`, `estado`) VALUES
+(1, '111111111', '$2y$10$NGrKWLMEVy3Milk1l66cje3sx/HRiIOC7lQdxlxLxFZtRQu6I2yi6', 'Dario administrador', 'direccion 1', 1, 1),
+(2, '222222222', '$2y$10$NGrKWLMEVy3Milk1l66cje3sx/HRiIOC7lQdxlxLxFZtRQu6I2yi6', 'Juan Receptor', 'direccion 2', 2, 1),
+(3, '333333333', '$2y$10$NGrKWLMEVy3Milk1l66cje3sx/HRiIOC7lQdxlxLxFZtRQu6I2yi6', 'Maria Tecnica Laboratorista', 'direccion 3', 3, 1),
+(4, '444444444', '$2y$10$NGrKWLMEVy3Milk1l66cje3sx/HRiIOC7lQdxlxLxFZtRQu6I2yi6', 'Teresa Cliente', 'direccion 4', 4, 1),
+(5, '555555555', '$2y$10$NGrKWLMEVy3Milk1l66cje3sx/HRiIOC7lQdxlxLxFZtRQu6I2yi6', 'Lait SA Cliente Emp', 'direccion 5', 5, 1),
+(6, '999999999', '$2y$10$NGrKWLMEVy3Milk1l66cje3sx/HRiIOC7lQdxlxLxFZtRQu6I2yi6', 'asdas', 'asdsa', 5, 1);
 
 --
 -- Índices para tablas volcadas
@@ -203,7 +204,7 @@ ALTER TABLE `tipousuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `codigoUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `codigoUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Restricciones para tablas volcadas
 --

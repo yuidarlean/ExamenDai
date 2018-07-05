@@ -1,4 +1,14 @@
-  <div class="wrapper ">
+<?php
+    $usuario = null;
+    
+    if(isset($_SESSION["usuario"])){
+        $usuario = $_SESSION["usuario"];
+    }else{
+        header("Location: index.php");
+    }
+?>
+
+<div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"

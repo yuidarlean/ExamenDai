@@ -1,8 +1,8 @@
 <?php
 
 class DBConexion{
-    private $USER = "test";
-    private $PASSWORD = "Unisys2016#";
+    private $USER = "root";//"tooy";
+    private $PASSWORD = "";//"Unisys2016#"; 
     private $DSN = 'mysql:host=localhost;dbname=db_muestras;charset=utf8';
     
     private static $instancia;
@@ -22,4 +22,4 @@ class DBConexion{
     public function getConexion(){
         return $this->cnx;
     }
-}
+} 
