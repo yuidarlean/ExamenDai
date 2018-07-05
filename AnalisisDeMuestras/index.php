@@ -1,132 +1,62 @@
 <?php
+ if($_SERVER["REQUEST_METHOD"]=="POST"){
+    include 'php/dao/UsuarioDAO.class.php';
+     
+    $usuarioDAO = new UsuarioDAO();
+    $resultado =  $usuarioDAO->login($_POST["rut"], $_POST["clave"]);
+    
+    if($resultado == false){
+        echo '<div class="row justify-content-md-center"><div class="col-3"><div class="alert alert-danger text-center" role="alert">Usuario o clave inválida</div></div></div>';
+    }else{
+        if ($resultado["estado"]==1){
+            session_start();
+            $_SESSION["usuario"] = $resultado;
+            header("Location: bienvenido.php");            
+        }else if($resultado["estado"]==2){
+            echo '<div class="row justify-content-md-center"><div class="col-6"><div class="alert alert-warning text-center" role="alert">Su cuenta se encuentra bloqueada. Acerquese al bibliotecario para m&aacute;s informaci&oacute;n.</div></div></div>';
+        } 
+    }
+    
+ }
  include ('php/base/header.php');
-?>
-    </head>
-    <body>
-        <?php
-         include ('php/base/menu.php');
-        ?>
-        <div class="main-panel">
-            <div class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
-                <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <a class="navbar-brand">Inicio</a>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end">
-                        <form class="navbar-form">
-                            <span class="bmd-form-group">
-                                <div class="input-group no-border">
-                                    <input type="text" value class="form-control" placeholder="Buscar...">
-                                    <button type="button" class="btn btn-white btn-round btn-just-icon">
-                                        <i class="material-icons">search</i>
-                                        <div class="ripple-container"></div>
-                                    </button>
-                                </div>
-                            </span>
-                        </form>
-                    </div>
-                </div>
-            </div>
+ 
+ ?>
+    
+        <div class="main-panel full"> 
+            
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header card-header-primary">
-                                    <h4>Muestras ingresadas</h4>
-                                    <p class="card-category">Muestras ingresadas que est&aacute;n a la espera de ser recepcionadas:</p>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead class="text-primary">
-                                                <th>ID Muestra</th>
-                                                <th>Fecha recepci&oacute;n</th>
-                                                <th>Temperatura de la muestra</th>
-                                                <th>Cantidad</th>
-                                                <th>Opci&oacute;n</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>27-06-2018</td>
-                                                    <td>15°</td>
-                                                    <td>5</td>
-                                                    <td>Ver detalle</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header card-header-info">
-                                    <h4>Muestras pendientes</h4>
-                                    <p class="card-category">Muestras recepcionadas que est&aacute;n a la espera de ser analizadas:</p>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead class="text-primary">
-                                                <th>ID Muestra</th>
-                                                <th>Fecha recepci&oacute;n</th>
-                                                <th>Temperatura de la muestra</th>
-                                                <th>Cantidad</th>
-                                                <th>Opci&oacute;n</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>27-06-2018</td>
-                                                    <td>15°</td>
-                                                    <td>5</td>
-                                                    <td>Ver detalle</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
+                    
+                    <div class="row justify-content-center ">
+                        <div class="col-md-5">
                             <div class="card">
                                 <div class="card-header card-header-success">
-                                    <h4>Muestras analizadas</h4>
-                                    <p class="card-category">Muestras analizadas con sus resultados:</p>
+                                    <h4>Ingreso</h4>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead class="text-primary">
-                                                <th>ID Muestra</th>
-                                                <th>Fecha recepci&oacute;n</th>
-                                                <th>Temperatura de la muestra</th>
-                                                <th>Cantidad</th>
-                                                <th>Opci&oacute;n</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>27-06-2018</td>
-                                                    <td>15°</td>
-                                                    <td>5</td>
-                                                    <td>Ver detalle</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <form action="index.php" method="POST"> 
+                                        
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Rut</label>
+                                                    <input type="text" id="rut" name="rut" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12"> 
+                                                <div class="form-group bmd-form-group">
+                                                    <label class="bmd-label-floating">Clave</label>
+                                                    <input type="password" id="clave" name="clave" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="registro.php" class="btn btn-secondary  ">¿No esta registrado? ingrese aquí</a>
+                                        <button type="submit" class="btn btn-success pull-right">Ingresar</button>
+                                        <div class="clearfix"></div>
+                                    
+                                    </form>
                                 </div>
                             </div>
                         </div>

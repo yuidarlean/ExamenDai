@@ -1,3 +1,7 @@
+<?php 
+session_start(); 
+include_once 'php/modelo/Usuario.class.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,6 +9,10 @@
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <title>Solicitudes y An&aacute;lisis de Muestras - ISP</title>
         <link href="assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="assets/css/font-face.css" />  
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css"> 
+        
+        <link rel="stylesheet" type="text/css" href="assets/css/css.css" />
         <!--   Core JS Files   -->
         <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
         <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
@@ -22,6 +30,5 @@
 
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="assets/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>        
-        <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="assets/css/css.css" />
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    </head>
+    <body>
