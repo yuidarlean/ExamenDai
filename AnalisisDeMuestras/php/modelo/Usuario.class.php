@@ -12,17 +12,17 @@ class Usuario {
      * @var TipoUsuario 
      */
     private $tipoUsuario;
-    private $categoria;
+    private $estado;
     
     
-    function __construct($codigoUsuario, $rutUsuario, $passwordUsuario, $nombreUsuario, $direccionUsuario, $tipoUsuario, $categoria) {
+    function __construct($codigoUsuario, $rutUsuario, $passwordUsuario, $nombreUsuario, $direccionUsuario, $tipoUsuario, $estado) {
         $this->codigoUsuario = $codigoUsuario;
         $this->rutUsuario = $rutUsuario;
         $this->passwordUsuario = $passwordUsuario;
         $this->nombreUsuario = $nombreUsuario;
         $this->direccionUsuario = $direccionUsuario;
         $this->tipoUsuario = $tipoUsuario;
-        $this->categoria = $categoria;
+        $this->estado = $estado;
     }
     
     function getCodigoUsuario() {
@@ -49,8 +49,8 @@ class Usuario {
         return $this->tipoUsuario;
     }
 
-    function getCategoria() {
-        return $this->categoria;
+    function getEstadoUsuario() {
+        return $this->estado;
     }
 
     function setCodigoUsuario($codigoUsuario) {
@@ -77,8 +77,8 @@ class Usuario {
         $this->tipoUsuario = $tipoUsuario;
     }
 
-    function setCategoria($categoria) {
-        $this->categoria = $categoria;
+    function setEstadoUsuario($estado) {
+        $this->estado = $estado;
     }
 
 }

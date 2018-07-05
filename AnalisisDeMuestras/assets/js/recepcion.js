@@ -16,5 +16,34 @@ $(document).ready(function(){
             });
         }
     })
+    
+    $("#btnBuscarCliente").click(function(){
+        console.log("Buscando clientes...");
+        if ($("#txtBusqueda").val() !== ""){
+            $.ajax({
+                url: "php/controladores/RecepcionBuscarCliente.php",
+                method: 'GET',
+                dataType: 'json',
+                data: {'q' : $("#txtBusqueda").val()},
+                success: function(data, textStatus, jqXHR){
+                    console.log("Llenando tabla con resultados...");
+                    $resultado = data;
+                    $.each($resultado, function(index, value){
+                        $("#tabladatos").append('<tr>'+
+                                '<td>'+value["codigoid"]+'</td>'+
+                                '<td>'+value["rut"]+'</td>'+
+                                '<td>'+value["nombre"]+'</td>'+
+                                '<td><button type="button" id="btnSeleccionar" class="btn btn-success btn-sm">Seleccionar</button></tr>'  
+                                )
+                    })
+                }
+                
+            }).fail(function(data, textStatus, jqXHR){
+                    console.log(textStatus);
+                    console.log(jqXHR);
+                })
+
+        }
+    })    
 });
 
