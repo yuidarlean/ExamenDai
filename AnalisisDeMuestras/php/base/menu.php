@@ -39,7 +39,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="index.php?action=logout"> 
               <i class="material-icons">vpn_key</i>
               <p>Cerrar sesi&oacute;n</p>
             </a>

@@ -1,5 +1,6 @@
 <?php
 include '../dao/UsuarioDAO.class.php';
+include '../dao/ContactoDAO.class.php';
 
 
 if ($_SERVER['REQUEST_METHOD']=='POST'){
@@ -17,27 +18,26 @@ function empresaNuevo(){
     $empresa = new Usuario(null, $_POST["rut"], $password, $_POST["nombre"], $_POST["direccion"], $tipo, null);
     //(0, $_POST["rut"], $_POST["nombre"], $password, $_POST["direccion"], 0);
     
-    
-    
-    
-    
-    
-    
-    
-    
     $usuarioDAO = new UsuarioDAO();
     $idEmpresa = $usuarioDAO->IngresarUsuario($empresa);
     
-    /*if($idEmpresa){ 
-        
+    $idContacto = 0;
+    
+    if($idEmpresa > 0){ 
+        $usuario = new Usuario($idEmpresa, null, null, null, null, null, null);
+        $contacto = new Contacto(null,$_POST["rutcontacto"], $_POST["nombrecontacto"], $_POST["emailcontacto"], $_POST["telefonocontacto"], $usuario );
+        $contactoDAO = new ContactoDAO();
+
+        $idContacto = $contactoDAO->IngresarContacto($contacto);
     }
     
-    $contacto = new Contacto($_POST["rutcontacto"], $_POST["nombrecontacto"], $_POST["emailcontacto"], $_POST["telefonocontacto"], $idEmpresa);
-    $contactoDAO = new ContactoDAO();
-    */
-    //$resp = $contactoDAO->IngresarContacto($contacto);
     
-    return array("resultado"=>$idEmpresa); 
+    
+    return array("resultado"=> array(
+        "codigoEmpresa" => $idEmpresa,
+        "codigoContacto" => $idContacto
+                
+    )); 
 }
 
 

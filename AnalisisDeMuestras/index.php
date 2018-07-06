@@ -1,4 +1,6 @@
 <?php
+ include ('php/base/header.php');
+ 
  if($_SERVER["REQUEST_METHOD"]=="POST"){
     include 'php/dao/UsuarioDAO.class.php';
      
@@ -18,7 +20,10 @@
     }
     
  }
- include ('php/base/header.php');
+ 
+ if($_SERVER["REQUEST_METHOD"]=='GET' && isset($_GET["action"]) && $_GET["action"]=="logout"){
+    session_destroy();
+}
  
  ?>
     

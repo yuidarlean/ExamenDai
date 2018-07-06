@@ -1,6 +1,7 @@
 <?php
 include_once __DIR__. '/../conexion/DBConexion.class.php';
 include_once __DIR__. '/../modelo/Usuario.class.php'; 
+include_once __DIR__. '/../modelo/Contacto.class.php';
 
 Class UsuarioDAO{
     

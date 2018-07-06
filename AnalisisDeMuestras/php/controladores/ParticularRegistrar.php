@@ -1,6 +1,6 @@
 <?php
-include '../dao/ParticularDAO.class.php';
-include '../dao/TelefonoDAO.class.php';
+include '../dao/UsuarioDAO.class.php'; 
+include '../dao/ContactoDAO.class.php';
 
 if ($_SERVER['REQUEST_METHOD']=='POST'){
     echo json_encode(particularNuevo());
@@ -11,14 +11,24 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 function particularNuevo(){
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     
-    $particular = new Particular(0, $_POST["rut"], $password, $_POST["nombre"], $_POST["direccion"], $_POST["email"]);
+    $tipo = new TipoUsuario(4, null);
+    $particular = new Usuario(null, $_POST["rut"], $password, $_POST["nombre"], $_POST["direccion"], $tipo, null);
     
-    $particularDAO = new ParticularDAO();
-    $idParticular = $particularDAO->ingresar($particular);
+    $usuarioDAO = new UsuarioDAO();
+    $idParticular = $usuarioDAO->IngresarUsuario($particular); 
     
-    $telefono = new Telefono(0, $_POST["telefono"], $idParticular);
-    $telefonoDAO = new TelefonoDAO();
+    $idContacto = 0;
+    if($idParticular > 0){
+        $usuario = new Usuario($idParticular, null, null, null, null, null, null);
+        $contacto = new Contacto(null, null, null, null, $_POST["telefono"], $usuario ); 
+        $contactoDAO = new ContactoDAO();
+
+        $idContacto = $contactoDAO->IngresarContacto($contacto);
+    }
     
-    $resp = $telefonoDAO->ingresar($telefono);
-    return array("resultado"=>$resp);
+    return array("resultado"=> array( 
+        "codigoParticular" => $idParticular,
+        "codigoContacto" => $idContacto
+                
+    ));
 }
