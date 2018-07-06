@@ -46,8 +46,8 @@
                                         <div class="form-row">
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label for="txtCodigoCliente" class="bmd-label-floating">C&oacute;digo Cliente:</label>
-                                                    <input type="text" class="form-control" id="txtCodigoCliente" required>                                                    
+                                                    <label for="txtCodigoCliente">C&oacute;digo Cliente:</label>
+                                                    <input type="text" class="form-control" id="txtCodigoCliente" required readonly>                                                    
                                                 </div>
                                             </div>
                                             <div class="2">
@@ -58,13 +58,13 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label for="txtRutCliente" class="bmd-label-floating">Rut Cliente:</label>
+                                                    <label for="txtRutCliente">Rut Cliente:</label>
                                                     <input type="text" class="form-control" id="txtRutCliente" readonly="true">                                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="txtNombreCliente" class="bmd-label-floating">Nombre Cliente:</label>
+                                                    <label for="txtNombreCliente">Nombre Cliente:</label>
                                                     <input type="text" class="form-control" id="txtNombreCliente" readonly="true">                                                    
                                                 </div>                                                
                                             </div>
@@ -128,7 +128,7 @@
           <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
-                    <label for="txtBusqueda" class="bmd-label-floating">C&oacute;digo/RUT</label>
+                    <label for="txtBusqueda" class="bmd-label-static">C&oacute;digo/RUT</label>
                     <input type="text" class="form-control" id="txtBusqueda">
                 </div>     
               </div>              
@@ -165,5 +165,26 @@
     </div>
   </div>
 </div>
+<!-- Modal Registro OK-->
+<div class="modal fade" id="modalRegistroOK" tabindex="-1" role="dialog" aria-labelledby="modalRegistroOK" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="modalBuscarCliente">Recepci&oacute;n de muestras</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <p></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnRegistroOK">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     </body>
 </html>

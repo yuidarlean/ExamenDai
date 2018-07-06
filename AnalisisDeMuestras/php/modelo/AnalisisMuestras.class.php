@@ -1,25 +1,29 @@
 <?php
 Class AnalisisMuestras{
     private $idanalisismuestras;
+    private $codigomuestra;
     private $fecharecepcion;
     private $temperaturamuestra;
     private $cantidadmuestra;
-    private $codigoempresa;
-    private $codigoparticular;
-    private $rutempleadorecibe;
+    private $codigocliente;
+    private $codigoreceptor;
     
-    public function __construct($idanalisismuestras,$fecharecepcion,$temperaturamuestra,$cantidadmuestra,$codigoempresa,$codigoparticular,$rutempleadorecibe) {
+    public function __construct($idanalisismuestras,$codigomuestra,$fecharecepcion,$temperaturamuestra,$cantidadmuestra,$codigocliente,$codigoreceptor) {
         $this->idanalisismuestras = $idanalisismuestras;
+        $this->codigomuestra = $codigomuestra;
         $this->fecharecepcion = $fecharecepcion;
         $this->temperaturamuestra = $temperaturamuestra;
         $this->cantidadmuestra = $cantidadmuestra;
-        $this->codigoempresa = $codigoempresa;
-        $this->codigoparticular = $codigoparticular;
-        $this->rutempleadorecibe = $rutempleadorecibe;
+        $this->codigocliente = $codigocliente;
+        $this->codigoreceptor = $codigoreceptor;
     }
     
     public function getIdanalisismuestras() {
         return $this->idanalisismuestras;
+    }
+    
+    public function getCodigomuestra() {
+        return $this->codigomuestra;
     }
 
     public function getFecharecepcion() {
@@ -34,20 +38,20 @@ Class AnalisisMuestras{
         return $this->cantidadmuestra;
     }
 
-    public function getCodigoempresa() {
-        return $this->codigoempresa;
+    public function getCodigocliente() {
+        return $this->codigocliente;
     }
 
-    public function getCodigoparticular() {
-        return $this->codigoparticular;
-    }
-
-    public function getRutempleadoRecibe() {
-        return $this->rutempleadorecibe;
+    public function getCodigoreceptor() {
+        return $this->codigoreceptor;
     }
 
     public function setIdanalisismuestras($idanalisismuestras) {
         $this->idanalisismuestras = $idanalisismuestras;
+    }
+    
+    public function setCodigomuestra($codigomuestra){
+        $this->codigomuestra = $codigomuestra;
     }
 
     public function setFecharecepcion($fecharecepcion) {
@@ -62,18 +66,13 @@ Class AnalisisMuestras{
         $this->cantidadmuestra = $cantidadmuestra;
     }
 
-    public function setCodigoempresa($codigoempresa) {
-        $this->codigoempresa = $codigoempresa;
+    public function setCodigocliente($codigocliente) {
+        $this->codigocliente = $codigocliente;
     }
 
-    public function setCodigoparticular($codigoparticular) {
-        $this->codigoparticular = $codigoparticular;
+    public function setCodigoreceptor($codigoreceptor) {
+        $this->codigoreceptor = $codigoreceptor;
     }
-
-    public function setRutempleadoRecibe($rutempleadorecibe) {
-        $this->rutempleadorecibe = $rutempleadorecibe;
-    }
-
 
     
 }
