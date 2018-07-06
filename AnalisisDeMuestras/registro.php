@@ -147,7 +147,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Se ha registrado su cuenta correctamente. Haga click <a href="login.php">aqu&iacute;</a> para iniciar sesi&oacute;n.</p>
+                        <p>Se ha registrado su cuenta correctamente. Haga click <a href="index.php">aqu&iacute;</a> para iniciar sesi&oacute;n.</p>
                     </div>
                     <div class="modal-footer">
                     </div>

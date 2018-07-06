@@ -1,60 +1,74 @@
 <?php
+include_once 'Usuario.class.php'; 
+
 Class Contacto {
+    private $codigocontacto;
     private $rutcontacto;
     private $nombreContacto;
     private $emailContacto;
     private $telefonoContacto;
-    private $codigoEmpresa;
+    /**
+     *
+     * @var Usuario 
+     */
+    private $usuario;
     
-    public function __construct($rutcontacto, $nombreContacto, $emailContacto, $telefonoContacto, $codigoEmpresa){
+    function __construct($codigocontacto, $rutcontacto, $nombreContacto, $emailContacto, $telefonoContacto, Usuario $usuario) {
+        $this->codigocontacto = $codigocontacto;
         $this->rutcontacto = $rutcontacto;
         $this->nombreContacto = $nombreContacto;
         $this->emailContacto = $emailContacto;
         $this->telefonoContacto = $telefonoContacto;
-        $this->codigoEmpresa = $codigoEmpresa;
+        $this->usuario = $usuario;
     }
-    
-    public function getRutcontacto() {
+
+    function getCodigocontacto() {
+        return $this->codigocontacto;
+    }
+
+    function getRutcontacto() {
         return $this->rutcontacto;
     }
 
-    public function getNombreContacto() {
+    function getNombreContacto() {
         return $this->nombreContacto;
     }
 
-    public function getEmailContacto() {
+    function getEmailContacto() {
         return $this->emailContacto;
     }
 
-    public function getTelefonoContacto() {
+    function getTelefonoContacto() {
         return $this->telefonoContacto;
     }
 
-    public function getCodigoEmpresa() {
-        return $this->codigoEmpresa;
+    function getUsuario() {
+        return $this->usuario;
     }
 
-    public function setRutcontacto($rutcontacto) {
+    function setCodigocontacto($codigocontacto) {
+        $this->codigocontacto = $codigocontacto;
+    }
+
+    function setRutcontacto($rutcontacto) {
         $this->rutcontacto = $rutcontacto;
     }
 
-    public function setNombreContacto($nombreContacto) {
+    function setNombreContacto($nombreContacto) {
         $this->nombreContacto = $nombreContacto;
     }
 
-    public function setEmailContacto($emailContacto) {
+    function setEmailContacto($emailContacto) {
         $this->emailContacto = $emailContacto;
     }
 
-    public function setTelefonoContacto($telefonoContacto) {
+    function setTelefonoContacto($telefonoContacto) {
         $this->telefonoContacto = $telefonoContacto;
     }
 
-    public function setCodigoEmpresa($codigoEmpresa) {
-        $this->codigoEmpresa = $codigoEmpresa;
+    function setUsuario(Usuario $usuario) {
+        $this->usuario = $usuario;
     }
 
 
-    
-    
 }

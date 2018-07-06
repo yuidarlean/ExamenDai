@@ -21,9 +21,10 @@ $(document).ready(function (){
                     'rutcontacto' : $("#txtRutContacto").val(), 'nombrecontacto' : $("#txtNombreContacto").val(),
                     'emailcontacto' : $("#txtEmailContacto").val(), 'telefonocontacto' : $("#txtTelefonoContacto").val()},
                 success: function(data, textStatus, jqXHR){
-                    console.log(data);
-                    resultadofinal = data;
-                    if(resultadofinal["resultado"]==0){
+                    arr = data;
+                    console.log(arr);  
+                    
+                    if(arr.resultado.codigoContacto > 0){ 
                         $("#modalRegistroOK").modal("show");
                     }else{
 
@@ -42,9 +43,10 @@ $(document).ready(function (){
                     'password' : $("#txtClave1").val(), 'direccion' : $("#txtDireccion").val(),
                     'email' : $("#txtEmail").val(), 'telefono' : $("#txtTelefono").val()},
                 success: function(data, textStatus, jqXHR){
-                    console.log(data);
-                    resultadofinal = data;
-                    if(resultadofinal["resultado"]==0){
+                    arr = data;
+                    console.log(arr); 
+                    
+                    if(arr.resultado.codigoContacto > 0){ 
                         $("#modalRegistroOK").modal("show");
                     }else{
 

@@ -15,7 +15,8 @@ Class ContactoDAO{
      * @param Contacto $data
      */
     public function IngresarContacto($data){
-        $query = "insert into contacto (rutcontacto,nombrecontacto,emailcontacto,telefonocontacto,codigoempresa) values (?,?,?,?,?)";
+        $query = "insert into contacto (rutcontacto, nombrecontacto, emailcontacto, telefonocontacto, codigousuario) values (?,?,?,?,?)";
+        $respuesta = 0;
         
         $preparedStatement = $this->conexion->prepare($query);
         if ($preparedStatement !== false){
@@ -26,19 +27,22 @@ Class ContactoDAO{
             $preparedStatement->bindParam(2,$nombrecontacto);
             
             $emailcontacto = $data->getEmailContacto();
-            $preparedStatement->bindParam(3,$emailcontacto);
-            
+            $preparedStatement->bindParam(3,$emailcontacto); 
+             
             $telefonocontacto = $data->getTelefonoContacto();
-            $preparedStatement->bindParam(4,$telefonocontacto);
+            $preparedStatement->bindParam(4,$telefonocontacto); 
             
-            $codigoempresa = $data->getCodigoEmpresa();
-            $preparedStatement->bindParam(5,$codigoempresa);
+            $codigousuario = $data->getUsuario()->getCodigoUsuario();
+            $preparedStatement->bindParam(5,$codigousuario);
             
             $preparedStatement->execute();
             
-            return 0;
+            $id = $this->conexion->lastInsertId(); 
+            
+            return $id;
         }else{
             throw new Exception ('no se pudo prepara la consulta a la base de datos: '.$this->conexion->$error);
         }
+        return $respuesta;
     }
 }
