@@ -18,13 +18,25 @@ $(document).ready(function(){
     })
     
     $("#btnRegistrar").click(function(){
+        
+        var v = $("#frmNuevaMuestra").valid();
+        if(!v){
+            return false;
+        }
+        var validarCheck = false;
+        
         var checks = new Array();
         i = 0;
         $('input[type=checkbox]:checked').each(function(){
             console.log("Seleccionado " + $(this).prop("id") + " (" + $(this).val() +") Seleccionado");
             checks[i]=$(this).val();
             i++;
+            validarCheck = true;
         })
+        if (!validarCheck){
+            $("#mensajechecked").html("Debe seleccionar a lo menos un an&aacute;lisis a realizar a las muestras.");
+            return false;
+        }
         $.ajax({
             url: "php/controladores/RecepcionIngresarMuestras.php",
             method: 'POST',
@@ -35,7 +47,7 @@ $(document).ready(function(){
         success: function(data, textStatus, jqXHR){
             $resultado = data;
             if($resultado["resultado"]!=0){
-                $("#modalRegistroOK p").html("Se ha registrado la muestras satisfactoriamente. El c&oacute;digo generado del registro es el siguiente: <strong>"+$resultado["resultado"]+"</strong>");
+                $("#modalRegistroOK p").html("Se han registrado la muestras satisfactoriamente. El c&oacute;digo generado del registro es el siguiente: <strong>"+$resultado["resultado"]+"</strong>");
                 $("#modalRegistroOK").modal("show");
             }
         }
@@ -53,6 +65,9 @@ $(document).ready(function(){
                 success: function(data, textStatus, jqXHR){
                     console.log("Llenando tabla con resultados...");
                     $resultado = data;
+                    if ($resultado == ""){
+                        $("#tabladatos").html('<tr colspan="1"><td class="text-center">No existen registros coincidentes.</td></tr>');
+                    }
                     $.each($resultado, function(index, value){
                         $("#tabladatos").html('<tr>'+
                                 '<td>'+value["codigoid"]+'</td>'+
@@ -79,6 +94,19 @@ $(document).ready(function(){
                 })
 
         }
+    })
+    
+    $("#btnRegistroOK").click(function (){
+        $("#txtCodigoCliente").val("");
+        $("#txtNombreCliente").val("");
+        $("#txtRutCliente").val("");
+        $("#txtFechaRecepcion").val("");
+        $("#txtTemperatura").val("");
+        $("#txtCantidad").val("");
+        $('input[type=checkbox]').each(function(){
+            $(this).prop('checked',false);
+        })
+        $("#mensajechecked").html("");
     })
     
     $("#btnCerrarBuscarClientes").click(function (){

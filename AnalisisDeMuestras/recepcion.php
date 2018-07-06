@@ -2,6 +2,8 @@
     include ('php/base/header.php');
 ?>
 <script src="assets/js/recepcion.js" type="text/javascript"></script>
+<script src="assets/js/jquery.validate.js" type="text/javascript"></script>
+<script src="assets/js/validacion.js" type="text/javascript"></script>
         <?php
             include ('php/base/menu.php');
         ?>
@@ -47,7 +49,7 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="txtCodigoCliente">C&oacute;digo Cliente:</label>
-                                                    <input type="text" class="form-control" id="txtCodigoCliente" required readonly>                                                    
+                                                    <input type="text" class="form-control" id="txtCodigoCliente" name="txtCodigoCliente" required readonly>                                                    
                                                 </div>
                                             </div>
                                             <div class="2">
@@ -59,13 +61,13 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="txtRutCliente">Rut Cliente:</label>
-                                                    <input type="text" class="form-control" id="txtRutCliente" readonly="true">                                                    
+                                                    <input type="text" class="form-control" id="txtRutCliente" name="txtRutCliente" readonly="true">                                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="txtNombreCliente">Nombre Cliente:</label>
-                                                    <input type="text" class="form-control" id="txtNombreCliente" readonly="true">                                                    
+                                                    <input type="text" class="form-control" id="txtNombreCliente" name="txtNombreCliente" readonly="true">                                                    
                                                 </div>                                                
                                             </div>
                                         </div>
@@ -73,19 +75,19 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="txtFechaRecepcion">Fecha de Recepci&oacute;n:</label>
-                                                    <input type="date" id="txtFechaRecepcion" class="form-control" required>
+                                                    <input type="date" id="txtFechaRecepcion" class="form-control" name="txtFechaRecepcion">
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="txtTemperatura">Temperatura de Muestra:</label>
-                                                    <input type="text" id="txtTemperatura" class="form-control" required>
+                                                    <input type="text" id="txtTemperatura" class="form-control" name="txtTemperatura">
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="txtCantidad">Cantidad de Muestra:</label>
-                                                    <input type="text" id="txtCantidad" class="form-control" required>
+                                                    <input type="text" id="txtCantidad" class="form-control" name="txtCantidad">
                                                 </div>
                                             </div>
                                         </div>
@@ -99,6 +101,9 @@
                                                     
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <p id="mensajechecked" class="text-warning"></p>
                                         </div>
                                         <div class="form-row">
                                             <button type="button" id="btnRegistrar" class="btn btn-info">Registar</button>
