@@ -1,8 +1,7 @@
 <?php
     include ('php/base/header.php');
 ?>
-</head>
-    <body>
+<script src="assets/js/recepcion.js" type="text/javascript"></script>
         <?php
             include ('php/base/menu.php');
         ?>
@@ -52,7 +51,7 @@
                                                 </div>
                                             </div>
                                             <div class="2">
-                                                <button type="button" class="btn btn-primary btn-round btn-just-icon">
+                                                <button type="button" class="btn btn-primary btn-round btn-just-icon" data-toggle="modal" data-target="#modalBuscarCliente">
                                                     <i class="material-icons">search</i>
                                                     <div class="ripple-container"></div>
                                                 </button>
@@ -92,13 +91,17 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="card card-nav-tabs">
-                                                <div class="card-header card-header-">
-                                                    <h5>An&aacute;lisis a realizar:</h5>
+                                                <div class="card-header card-header-info">
+                                                    <h4>An&aacute;lisis a realizar:</h4>
+                                                    <p class="card-category">Seleccione los tipos de an&aacute;lisis que se realizar&aacute;n a las muestras:</p>
                                                 </div>
-                                                <div class="card-body">
-                                                    Hola
+                                                <div class="card-body" id="tiposanalisis">
+                                                    
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <button type="button" id="btnRegistrar" class="btn btn-info">Registar</button>
                                         </div>
                                     </form>
                                 </div>
@@ -110,6 +113,57 @@
             <?php
              include ('php/base/footer.php');
             ?>                
-        </div>        
+        </div>
+<!-- Modal -->
+<div class="modal fade" id="modalBuscarCliente" tabindex="-1" role="dialog" aria-labelledby="modalBuscarCliente" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalBuscarCliente">Buscar Cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label for="txtBusqueda" class="bmd-label-floating">C&oacute;digo/RUT</label>
+                    <input type="text" class="form-control" id="txtBusqueda">
+                </div>     
+              </div>              
+              <div class="col-md-2">
+                  <div class="form-group">
+                    <input type="button"class="btn btn-info" value="Buscar" id="btnBuscarCliente">                                        
+                  </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <table class="table" id="tablaClientes">
+                  <thead>
+                      <tr>
+                          <th>C&oacute;digo cliente</th>
+                          <th>Rut</th>
+                          <th>Cliente/Empresa</th>
+                          <th>Opci&oacute;n</th>
+                      </tr>
+                  </thead>
+                  <tfoot>
+                      <tr>
+                          <td colspan="3"></td>
+                      </tr>
+                  </tfoot>
+                  <tbody id="tabladatos">
+                      
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrarBuscarClientes">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
     </body>
 </html>

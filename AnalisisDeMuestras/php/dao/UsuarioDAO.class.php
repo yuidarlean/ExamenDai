@@ -10,6 +10,30 @@ Class UsuarioDAO{
     public function __construct() {
         $this->conexion = DBConexion::getInstance()->getConexion();
     }
+    
+    public function ObtenerClientes($filtro){
+        $query = "select codigoUsuario, rutUsuario, nombreUsuario, estado from usuario where (tipoUsuario=4 or tipoUsuario=5) and (UPPER(rutUsuario) LIKE UPPER(concat(?,'%')) or codigoUsuario = ?)";
+        $preparedStatement = $this->conexion->prepare($query);
+        if ($preparedStatement !== false){
+            $preparedStatement->bindParam(1,$filtro);
+            $preparedStatement->bindParam(2,$filtro);
+                
+            $preparedStatement->execute();
+        }else{
+            throw new Exception('No se pudo realizar la consulta '.$this->conexion->error);
+        }
+        $arUser = array();
+        foreach($preparedStatement->fetchAll(PDO::FETCH_ASSOC) as $row){
+            $u = new Usuario($row["codigoUsuario"], 
+                    $row["rutUsuario"], 
+                    0, 
+                    $row["nombreUsuario"], 
+                    0, 
+                    0, $row["estado"]);
+            array_push($arUser, $u);
+        }
+        return $arUser;
+    }
 
     
     public function login($rut, $clave) {
