@@ -18,8 +18,8 @@ include_once 'php/modelo/Usuario.class.php';
         <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
         <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
         <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-
-        <!--  Google Maps Plugin    -->
+        
+<!--  Google Maps Plugin    -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJDDhqMzDyo87pj5la5TRcA4TetuO2BEE"></script>
 
         <!-- Chartist JS -->
@@ -30,5 +30,6 @@ include_once 'php/modelo/Usuario.class.php';
 
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="assets/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>        
+        <script src="assets/js/script.js" type="text/javascript"></script>
     </head>
     <body>

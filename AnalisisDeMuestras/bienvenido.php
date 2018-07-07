@@ -2,10 +2,6 @@
  include ('php/base/header.php');
 ?>
 <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="assets/css/css.css" />
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    </head>
-    <body>
         <?php
          include ('php/base/menu.php');
         ?>

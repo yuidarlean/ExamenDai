@@ -26,6 +26,7 @@ $(document).ready(function (){
                     
                     if(arr.resultado.codigoContacto > 0){ 
                         $("#modalRegistroOK").modal("show");
+                        $("form")[0].reset(); 
                     }else{
 
                     }
@@ -48,6 +49,7 @@ $(document).ready(function (){
                     
                     if(arr.resultado.codigoContacto > 0){ 
                         $("#modalRegistroOK").modal("show");
+                        $("form")[0].reset(); 
                     }else{
 
                     }

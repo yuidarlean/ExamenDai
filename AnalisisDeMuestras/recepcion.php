@@ -1,10 +1,8 @@
 <?php
     include ('php/base/header.php');
+    include ('php/base/menu.php');
 ?>
-<script src="assets/js/recepcion.js" type="text/javascript"></script>
-        <?php
-            include ('php/base/menu.php');
-        ?>
+    <script src="assets/js/recepcion.js" type="text/javascript"></script>
         <div class="main-panel">
             <div class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
                 <div class="container-fluid">

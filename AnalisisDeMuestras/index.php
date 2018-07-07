@@ -14,9 +14,13 @@
             session_start();
             $_SESSION["usuario"] = $resultado;
             header("Location: bienvenido.php");            
-        }else if($resultado["estado"]==2){
-            echo '<div class="row justify-content-md-center"><div class="col-6"><div class="alert alert-warning text-center" role="alert">Su cuenta se encuentra bloqueada. Acerquese al bibliotecario para m&aacute;s informaci&oacute;n.</div></div></div>';
-        } 
+        }else if($resultado["estado"]==2){ 
+            echo '<div class="row justify-content-md-center">'
+                . '<div class="col-6">'
+                . '<div class="alert alert-warning text-center" role="alert">Su cuenta se encuentra bloqueada. Acerquese al administrador para m&aacute;s informaci&oacute;n.</div>'
+                . '</div>'
+                . '</div>';
+        }  
     }
     
  }

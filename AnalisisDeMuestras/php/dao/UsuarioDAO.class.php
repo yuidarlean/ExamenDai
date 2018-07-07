@@ -119,5 +119,174 @@ Class UsuarioDAO{
         return $respuesta; 
     }
     
+    /**
+     * 
+     * @param Usuario $data
+     */
+    public function ModificarUsuario($data){
+        $query = "UPDATE usuario SET rutUsuario = ?, nombreUsuario = ?, direccionUsuario=?, tipoUsuario=? "
+                . " WHERE codigoUsuario = ?";
+        $respuesta = 0; 
+        
+        $preparedStatement = $this->conexion->prepare($query);
+        if ($preparedStatement !== false){
+            //$codigoUsuario = $data->getCodigoUsuario();
+            $rutUsuario = $data->getRutUsuario();
+            $preparedStatement->bindParam(1,$rutUsuario);
+            
+            $nombreUsuario = $data->getNombreUsuario();
+            $preparedStatement->bindParam(2,$nombreUsuario);
+            
+            $direccionUsuario = $data->getDireccionUsuario();
+            $preparedStatement->bindParam(3,$direccionUsuario);
+            
+            $tipoUsuario = $data->getTipoUsuario()->getCodigoTipo(); 
+            $preparedStatement->bindParam(4,$tipoUsuario);
+            
+            $codigo = $data->getCodigoUsuario(); 
+            $preparedStatement->bindParam(5,$codigo); 
+            
+            $preparedStatement->execute();  
+            
+            $c = $preparedStatement->rowCount(); 
+           
+            return $c; 
+            
+        }else{
+            throw new Exception ('no se pudo prepara la consulta a la base de datos: '.$this->conexion->$error);
+        }
+        return $respuesta; 
+    }
+    
+    /**
+     * 
+     * @param Usuario $data
+     */
+    public function DesactivarUsuario($data){
+        $query = "UPDATE usuario SET estado = 2 "
+                . " WHERE codigoUsuario = ?";
+        $respuesta = 0; 
+        
+        $preparedStatement = $this->conexion->prepare($query);
+        if ($preparedStatement !== false){
+            
+            $codigo = $data->getCodigoUsuario(); 
+            $preparedStatement->bindParam(1,$codigo);  
+            
+            $preparedStatement->execute();  
+            
+            $c = $preparedStatement->rowCount(); 
+           
+            return $c; 
+            
+        }else{
+            throw new Exception ('no se pudo prepara la consulta a la base de datos: '.$this->conexion->$error);
+        }
+        return $respuesta; 
+    }
+    
+    /**
+     * 
+     * @param Usuario $data
+     */
+    public function ActivarUsuario($data){
+        $query = "UPDATE usuario SET estado = 1 " 
+                . " WHERE codigoUsuario = ?";
+        $respuesta = 0; 
+        
+        $preparedStatement = $this->conexion->prepare($query);
+        if ($preparedStatement !== false){
+            
+            $codigo = $data->getCodigoUsuario(); 
+            $preparedStatement->bindParam(1,$codigo);  
+            
+            $preparedStatement->execute();  
+            
+            $c = $preparedStatement->rowCount(); 
+           
+            return $c; 
+            
+        }else{
+            throw new Exception ('no se pudo prepara la consulta a la base de datos: '.$this->conexion->$error);
+        }
+        return $respuesta; 
+    }
+    
+    /**
+     * 
+     * @param Usuario $data
+     */
+    public function ObtenerUsuario($data){
+        $arUser = array();
+        
+        $query = "SELECT u.codigoUsuario, u.rutUsuario, u.passwordUsuario, u.nombreUsuario, u.direccionUsuario, u.tipoUsuario, "
+                . " tu.nombresTipo, u.estado"
+                . " FROM usuario u"
+                . " LEFT JOIN tipousuario tu on tu.codigoTipo = u.tipoUsuario "
+                . " ";
+        $query .= " where u.tipoUsuario < 4 ";
+        
+        $query2 = "";
+        if($data->getCodigoUsuario() != null){
+            $query2 .= " u.codigoUsuario = ? ";
+        }
+        
+        if($data->getRutUsuario() != null){
+            if(strlen($query2) > 0){ 
+                $query2 .= " OR ";
+            }
+            $query2 .= " u.rutUsuario like concat( ?, '%') ";
+        }
+        
+        if($data->getNombreUsuario() != null){
+            if(strlen($query2) > 0){ 
+                $query2 .= " OR ";
+            }
+            $query2 .= " u.nombreUsuario like concat( ?, '%') ";
+        }
+        
+        
+        if(strlen($query2) > 0){ 
+            $query .= "and ( ". $query2 . " )";
+        }
+        
+        $respuesta = 0;
+        
+        $preparedStatement = $this->conexion->prepare($query);
+        if ($preparedStatement !== false){
+            
+            $i = 1;
+            if($data->getCodigoUsuario() != null){
+                $codigo = $data->getCodigoUsuario();
+                $preparedStatement->bindParam($i++,$codigo);
+            }
+            
+            if($data->getRutUsuario() != null){
+                $rut = $data->getRutUsuario();
+                $preparedStatement->bindParam($i++, $rut);
+            }
+            
+            if($data->getNombreUsuario() != null){
+                $nombre = $data->getNombreUsuario();
+                $preparedStatement->bindParam($i++, $nombre);
+            }
+            
+            $preparedStatement->execute();  
+            
+             foreach ($preparedStatement->fetchAll(PDO::FETCH_ASSOC) as $row){
+                
+                $tipoUsuario = new TipoUsuario($row["tipoUsuario"], $row["nombresTipo"]);
+                $usuario = new Usuario($row["codigoUsuario"], $row["rutUsuario"], "", $row["nombreUsuario"], $row["direccionUsuario"], $tipoUsuario, $row["estado"]); 
+                
+                array_push($arUser, $usuario);
+            }
+            $respuesta = $arUser;
+        }else{
+            throw new Exception ('no se pudo prepara la consulta a la base de datos: '.$this->conexion->$error);
+        }
+        return $respuesta; 
+    }
+    
+    
 }
 
