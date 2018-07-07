@@ -2,7 +2,12 @@
     include ('php/base/header.php');
     include ('php/base/menu.php');
 ?>
-    <script src="assets/js/recepcion.js" type="text/javascript"></script>
+<script src="assets/js/recepcion.js" type="text/javascript"></script>
+<script src="assets/js/jquery.validate.js" type="text/javascript"></script>
+<script src="assets/js/validacion.js" type="text/javascript"></script>
+        <?php
+            include ('php/base/menu.php');
+        ?>
         <div class="main-panel">
             <div class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
                 <div class="container-fluid">
@@ -44,8 +49,8 @@
                                         <div class="form-row">
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label for="txtCodigoCliente" class="bmd-label-floating">C&oacute;digo Cliente:</label>
-                                                    <input type="text" class="form-control" id="txtCodigoCliente" required>                                                    
+                                                    <label for="txtCodigoCliente">C&oacute;digo Cliente:</label>
+                                                    <input type="text" class="form-control" id="txtCodigoCliente" name="txtCodigoCliente" required readonly>                                                    
                                                 </div>
                                             </div>
                                             <div class="2">
@@ -56,14 +61,14 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label for="txtRutCliente" class="bmd-label-floating">Rut Cliente:</label>
-                                                    <input type="text" class="form-control" id="txtRutCliente" readonly="true">                                                    
+                                                    <label for="txtRutCliente">Rut Cliente:</label>
+                                                    <input type="text" class="form-control" id="txtRutCliente" name="txtRutCliente" readonly="true">                                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="txtNombreCliente" class="bmd-label-floating">Nombre Cliente:</label>
-                                                    <input type="text" class="form-control" id="txtNombreCliente" readonly="true">                                                    
+                                                    <label for="txtNombreCliente">Nombre Cliente:</label>
+                                                    <input type="text" class="form-control" id="txtNombreCliente" name="txtNombreCliente" readonly="true">                                                    
                                                 </div>                                                
                                             </div>
                                         </div>
@@ -71,19 +76,19 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="txtFechaRecepcion">Fecha de Recepci&oacute;n:</label>
-                                                    <input type="date" id="txtFechaRecepcion" class="form-control" required>
+                                                    <input type="date" id="txtFechaRecepcion" class="form-control" name="txtFechaRecepcion">
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="txtTemperatura">Temperatura de Muestra:</label>
-                                                    <input type="text" id="txtTemperatura" class="form-control" required>
+                                                    <input type="text" id="txtTemperatura" class="form-control" name="txtTemperatura">
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="txtCantidad">Cantidad de Muestra:</label>
-                                                    <input type="text" id="txtCantidad" class="form-control" required>
+                                                    <input type="text" id="txtCantidad" class="form-control" name="txtCantidad">
                                                 </div>
                                             </div>
                                         </div>
@@ -97,6 +102,9 @@
                                                     
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <p id="mensajechecked" class="text-warning"></p>
                                         </div>
                                         <div class="form-row">
                                             <button type="button" id="btnRegistrar" class="btn btn-info">Registar</button>
@@ -126,7 +134,7 @@
           <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
-                    <label for="txtBusqueda" class="bmd-label-floating">C&oacute;digo/RUT</label>
+                    <label for="txtBusqueda" class="bmd-label-static">C&oacute;digo/RUT</label>
                     <input type="text" class="form-control" id="txtBusqueda">
                 </div>     
               </div>              
@@ -163,5 +171,26 @@
     </div>
   </div>
 </div>
+<!-- Modal Registro OK-->
+<div class="modal fade" id="modalRegistroOK" tabindex="-1" role="dialog" aria-labelledby="modalRegistroOK" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="modalBuscarCliente">Recepci&oacute;n de muestras</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <p></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnRegistroOK">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     </body>
 </html>
