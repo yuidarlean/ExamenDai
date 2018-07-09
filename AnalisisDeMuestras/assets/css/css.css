@@ -1,3 +1,18 @@
 .main-panel.full{
     width: 100% !important;
 }
+
+.form-group .bmd-label-static{
+    top: -20px; 
+}
+
+.form-row .card{
+    margin-top: 50px;
+}
+.form-row .card .card-header{
+    margin: 0px;
+}
+
+.form-group > .btn-round {
+    margin: -5px 0 0 0;
+}

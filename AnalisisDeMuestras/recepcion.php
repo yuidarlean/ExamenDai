@@ -53,11 +53,13 @@
                                                     <input type="text" class="form-control" id="txtCodigoCliente" name="txtCodigoCliente" required readonly>                                                    
                                                 </div>
                                             </div>
-                                            <div class="2">
-                                                <button type="button" class="btn btn-primary btn-round btn-just-icon" data-toggle="modal" data-target="#modalBuscarCliente">
-                                                    <i class="material-icons">search</i>
-                                                    <div class="ripple-container"></div>
-                                                </button>
+                                            <div class="col-md-1">
+                                                <div class="form-group">
+                                                    <button type="button" class="btn btn-primary btn-round btn-just-icon" data-toggle="modal" data-target="#modalBuscarCliente">
+                                                        <i class="material-icons">search</i>
+                                                        <div class="ripple-container"></div>
+                                                    </button>
+                                                </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
