@@ -71,8 +71,10 @@ $(document).ready(function (){
                         arrlabels = [];
                         arrseries =[];
                         $.each(arrMP[index]["listaResultado"], function (index, value) {
-                            arrlabels.push(value.tipoAnalisis.nombre + ' ('+value.ppm+')');
-                            arrseries.push(value.ppm);
+                            al = value.tipoAnalisis.nombre + ' ('+value.ppm+')';
+                            arrlabels.push(al);
+                            pm = value.ppm;
+                            arrseries.push(pm); 
                         })
                         console.log(arrseries);
                         $("#lblMuestra").html(arrMP[index]["codigomuestra"]);
@@ -89,6 +91,9 @@ $(document).ready(function (){
     
     $('#modalRevisarAnalisis').on('shown.bs.modal', function (e) {
         $('.ct-chart').fadeIn();
+        
+        console.log(arrlabels);
+        console.log(arrseries);
         new Chartist.Bar('.ct-chart', {
             labels: arrlabels,
             series: arrseries
@@ -103,8 +108,8 @@ $(document).ready(function (){
                 data.element.attr({
                     style: 'stroke-width: 60px'
                 });
-            }
-        }); 
+            } 
+        });  
     })
     
     function inicio(){

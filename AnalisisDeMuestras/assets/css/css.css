@@ -43,3 +43,8 @@
     height: 300px; 
     display: none;
 } 
+
+.ct-chart-bar .ct-label.ct-horizontal.ct-end{
+    color: #000000 !important;
+    font-size: 1rem !important;
+}
