@@ -78,7 +78,7 @@
                                             <p id="mensajechecked" class="text-warning"></p>
                                         </div>
                                         <div class="form-row">
-                                            <button type="button" id="btnRegistrar" class="btn btn-info">Registar</button>
+                                            <button type="button" id="btnRegistrar" class="btn btn-info">Registrar</button>
                                         </div>
                                     </form>
                                 </div>
