@@ -15,6 +15,14 @@ function particularNuevo(){
     $particular = new Usuario(null, $_POST["rut"], $password, $_POST["nombre"], $_POST["direccion"], $tipo, null);
     
     $usuarioDAO = new UsuarioDAO();
+    
+    $u = new Usuario(null, $_POST["rut"], null, null, null, new TipoUsuario(null, null), null); 
+    $r1 = $usuarioDAO->ObtenerUsuario($u);
+    
+    if(count($r1) > 0){ 
+        return array("resultado"=> "El rut ya se encuentra registrado en el sistema."); 
+    } 
+    
     $idParticular = $usuarioDAO->IngresarUsuario($particular); 
     
     $idContacto = 0;

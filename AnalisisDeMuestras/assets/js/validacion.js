@@ -73,10 +73,12 @@ $(document).ready(function(){
                 required: true
             },
             txtEmailContacto:{
-                required: true
+                required: true,
+                email: true
             },
             txtEmail:{
-                required: true
+                required: true,
+                email: true
             }
        },
        messages:{
@@ -107,10 +109,12 @@ $(document).ready(function(){
                required: "El nombre del contacto es requerido"
             },
             txtEmailContacto:{
-               required: "El email del contacto es requerido"
+               required: "El email del contacto es requerido",
+               email: "El email no tiene un formato válido."
             }, 
             txtEmail:{
-               required: "El email es requerido" 
+               required: "El email es requerido",
+               email: "El email no tiene un formato válido."
             }
            
        }

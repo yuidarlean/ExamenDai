@@ -33,7 +33,8 @@ $(document).ready(function (){
                         $("#modalRegistroOK").modal("show");
                         $("form")[0].reset(); 
                     }else{
-
+                        $("#modalMensaje .mensaje").html(arr.resultado); 
+                        $("#modalMensaje").modal('show');
                     }
                 }
             })            
@@ -56,7 +57,8 @@ $(document).ready(function (){
                         $("#modalRegistroOK").modal("show");
                         $("form")[0].reset(); 
                     }else{
-
+                        $("#modalMensaje .mensaje").html(arr.resultado);  
+                        $("#modalMensaje").modal('show');
                     }
                 }
             })            
