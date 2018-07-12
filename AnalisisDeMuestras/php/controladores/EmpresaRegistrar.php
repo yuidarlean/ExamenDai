@@ -19,6 +19,13 @@ function empresaNuevo(){
     //(0, $_POST["rut"], $_POST["nombre"], $password, $_POST["direccion"], 0);
     
     $usuarioDAO = new UsuarioDAO();
+    $u = new Usuario(null, $_POST["rut"], null, null, null, new TipoUsuario(null, null), null); 
+    $r1 = $usuarioDAO->ObtenerUsuario($u);
+    
+    if(count($r1) > 0){ 
+        return array("resultado"=> "El rut ya se encuentra registrado en el sistema."); 
+    } 
+    
     $idEmpresa = $usuarioDAO->IngresarUsuario($empresa);
     
     $idContacto = 0;
