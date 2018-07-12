@@ -79,7 +79,7 @@ DROP TABLE IF EXISTS `resultadoanalisis`;
 CREATE TABLE `resultadoanalisis` (
   `idTipoAnalisis` int(11) NOT NULL,
   `idAnalisisMuestras` int(11) NOT NULL,
-  `fechaRegistro` date NOT NULL,
+  `fechaRegistro` date DEFAULT NULL,
   `PPM` int(11) NOT NULL,
   `estado` int(1) NOT NULL DEFAULT '1',
   `codigoEmpleadoAnalista` int(11) DEFAULT NULL
@@ -159,7 +159,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`codigoUsuario`, `rutUsuario`, `passwordUsuario`, `nombreUsuario`, `direccionUsuario`, `tipoUsuario`, `estado`) VALUES
 (1, '111111111', '$2y$10$FOiJufJunWMxwONzU.0pceqMLoXDq4EhgXLKejjlDBe.e8t3YcDue', 'Dario adminis', 'direccion 133', 1, 1),
-(2, '222222222', '$2y$10$NGrKWLMEVy3Milk1l66cje3sx/HRiIOC7lQdxlxLxFZtRQu6I2yi6', 'sdfdsfsdf', 'direccion 222222222222', 2, 1),
+(2, '222222222', '$2y$10$NGrKWLMEVy3Milk1l66cje3sx/HRiIOC7lQdxlxLxFZtRQu6I2yi6', 'Gerardo Receptor', 'direccion 222222222222', 2, 1),
 (3, '333333333', '$2y$10$NGrKWLMEVy3Milk1l66cje3sx/HRiIOC7lQdxlxLxFZtRQu6I2yi6', 'Maria Tecnica Laboratorista asdasd', 'direccion 3', 3, 1),
 (4, '444444444', '$2y$10$NGrKWLMEVy3Milk1l66cje3sx/HRiIOC7lQdxlxLxFZtRQu6I2yi6', 'Teresa Cliente', 'direccion 4', 4, 1),
 (5, '555555555', '$2y$10$NGrKWLMEVy3Milk1l66cje3sx/HRiIOC7lQdxlxLxFZtRQu6I2yi6', 'Lait SA Cliente Emp', 'direccion 5', 5, 1),
