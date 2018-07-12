@@ -76,7 +76,8 @@ $(document).ready(function (){
                             pm = value.ppm;
                             arrseries.push(pm); 
                         })
-                        
+                        console.log(arrseries);
+                        $("#lblMuestra").html(arrMP[index]["codigomuestra"]);
                         $("#modalRevisarAnalisis").modal("show");
                         
                     });
@@ -97,7 +98,11 @@ $(document).ready(function (){
             labels: arrlabels,
             series: arrseries
         }, {
-            distributeSeries: true
+            distributeSeries: true,
+            low: 0,
+            axisY:{
+                onlyInteger: true
+            }
         }).on('draw',function(data){
             if(data.type === 'bar'){
                 data.element.attr({
