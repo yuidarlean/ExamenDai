@@ -64,7 +64,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Revisar analisis muestra <label id="lblMuestra"></label> </h5>
+                <h5 class="modal-title">Resultados muestra c&oacute;digo <label id="lblMuestra"></label> </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button> 
@@ -72,12 +72,10 @@
             <div class="modal-body">
                 
                 <div class="chart">
-                    <div class="ct-chart ct-golden-section"> </div>
+                    <div class="ct-chart"></div>
                 </div>
                 
                 
-            </div>
-            <div class="modal-footer">
             </div>
         </div>
     </div>

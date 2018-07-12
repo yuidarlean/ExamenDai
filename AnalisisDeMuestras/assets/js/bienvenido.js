@@ -74,7 +74,8 @@ $(document).ready(function (){
                             arrlabels.push(value.tipoAnalisis.nombre + ' ('+value.ppm+')');
                             arrseries.push(value.ppm);
                         })
-                        
+                        console.log(arrseries);
+                        $("#lblMuestra").html(arrMP[index]["codigomuestra"]);
                         $("#modalRevisarAnalisis").modal("show");
                         
                     });
@@ -92,7 +93,11 @@ $(document).ready(function (){
             labels: arrlabels,
             series: arrseries
         }, {
-            distributeSeries: true
+            distributeSeries: true,
+            low: 0,
+            axisY:{
+                onlyInteger: true
+            }
         }).on('draw',function(data){
             if(data.type === 'bar'){
                 data.element.attr({
