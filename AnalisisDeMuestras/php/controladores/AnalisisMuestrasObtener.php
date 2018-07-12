@@ -13,9 +13,7 @@ function ObtenerResAnalisis(){
     $u = new Usuario(null, null, null, null, null, new TipoUsuario(null, null), null);
     $receptor = new Usuario(null, null, null, null, null, new TipoUsuario(null, null), null);
     
-    if(isset($_GET["estado"])){ 
-        $detalle->setEstado($_GET["estado"]);
-    }
+    
     
     if(isset($_GET["clienteId"]) && $_GET["clienteId"] != null){
         $u->setCodigoUsuario($_GET["clienteId"]);
@@ -35,6 +33,10 @@ function ObtenerResAnalisis(){
     
     
     $detalle =  new AnalisisMuestras(null, null, null, null, null, $u, $receptor, null); 
+    
+    if(isset($_GET["estado"])){  
+        $detalle->setEstado($_GET["estado"]);
+    }
     
     if(isset($_GET["codigoMuestra"]) && $_GET["codigoMuestra"] != null){
         $detalle->setCodigomuestra($_GET["codigoMuestra"]); 

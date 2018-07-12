@@ -72,13 +72,11 @@ $(document).ready(function (){
                         b += '<td>'+value.nombreUsuario +'</td>';
                         b += '<td>'+value.tipoUsuario.nombresTipo +'</td>';
                         b += '<td>'+(value.estado == 1? 'Activado': 'Bloqueado') +'</td>';
-                        b += '<td>';
-                        if(index > 0){ 
-                            if(value.estado == 1){
-                                b += '<button class="desactivar btn btn-danger" attr-index="'+index+'" ><i class="material-icons">block</i></button>'; 
-                            }else{
-                                b += '<button class="activar btn btn-success" attr-index="'+index+'" ><i class="material-icons">done</i></button>'; 
-                            }
+                        b += '<td>'; 
+                        if(value.estado == 1){
+                            b += '<button class="desactivar btn btn-danger" attr-index="'+index+'" ><i class="material-icons">block</i></button>'; 
+                        }else{
+                            b += '<button class="activar btn btn-success" attr-index="'+index+'" ><i class="material-icons">done</i></button>'; 
                         }
                         b += '</td>';
                         b += '</tr>';
