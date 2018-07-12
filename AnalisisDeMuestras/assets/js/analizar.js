@@ -8,11 +8,21 @@ $(document).ready(function () {
         $.each($("#tabla-real-analisis .grilla tr"), function (index, value) {
             d = {};
             inpt = $(this).find("input");  
+            lbl = $(this).find("label");
+            if(inpt.val().trim() == ''){
+                $("#modalMensaje .mensaje").html(lbl.html()+" no tiene información ."); 
+                $("#modalMensaje").modal('show');
+                
+                return false; 
+            }
+            
             d["ppm"] = inpt.val();
+            
             d["idtipoanalisis"] = inpt.attr("attr-id-ta");
             lista.resultados.push(d);  
         });
         
+        return false;
         console.log(lista); 
         $.ajax({
             url : "php/controladores/ResultadoAnalisisActualizar.php",
@@ -76,7 +86,7 @@ $(document).ready(function () {
                         $("#tabla-real-analisis .grilla").html("");
                         $.each(arrMP[index]["listaResultado"], function (index, value) {
                             h = '<tr>';
-                            h += '<td><label for="muesta-'+index+'" class="bmd-label-static">' + value.tipoAnalisis.nombre + ':</label></td>';  
+                            h += '<td><label for="muesta-'+index+'" class="bmd-label-static">' + value.tipoAnalisis.nombre + '</label></td>';   
                             h += '<td>';
                             h += '<div class="form-group bmd-form-group">';
                             h += '<input id="muesta-'+index+'" name="muesta-'+index+'" attr-id-ta="'+value.tipoAnalisis.idtipoanalisis+'" type="number" class="form-control" />'; 
@@ -96,6 +106,7 @@ $(document).ready(function () {
             }
         });
     }
+    
     function limpiarModalAnalisis(){
         $("#txtFechaRecepcionM").val("");
         $("#txtTemperaturaM").val("");
