@@ -42,19 +42,19 @@
                                     <div class="col-md-12">
                                         <div class="form-group"> 
                                             <label for="txtRut" class="bmd-label-floating">Rut:</label>
-                                            <input type="text" maxlength="10" id="txtRut" class="form-control">
+                                            <input type="text" maxlength="10" id="txtRut" name="txtRut" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="txtNombre" class="bmd-label-floating">Nombre:</label>
-                                            <input type="text" maxlength="45" id="txtNombre" class="form-control">
+                                            <input type="text" maxlength="45" id="txtNombre" name="txtNombre" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="txtDireccion" class="bmd-label-floating">Direcci&oacute;n:</label>
-                                            <input type="text" maxlength="45" id="txtDireccion" class="form-control">
+                                            <input type="text" maxlength="45" id="txtDireccion" name="txtDireccion" class="form-control" required>
                                         </div>
                                     </div>
                                 </div> 
@@ -62,13 +62,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="txtClave1" class="bmd-label-floating">Contrase&ntilde;a:</label>
-                                            <input type="password" id="txtClave1" class="form-control" maxlength="10">
-                                        </div>
+                                            <input type="password" id="txtClave1" name="txtClave1" class="form-control" maxlength="10" required>
+                                        </div> 
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="txtClave2" class="bmd-label-floating">Repetir contrase&ntilde;a:</label>
-                                            <input type="password" id="txtClave2" class="form-control" maxlength="10">
+                                            <input type="password" id="txtClave2" name="txtClave2" class="form-control" maxlength="10" required>
                                         </div>
                                     </div>
                                 </div>
@@ -78,49 +78,48 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="txtEmail" class="bmd-label-floating">Email:</label>
-                                                <input type="email" maxlength="45" id="txtEmail" class="form-control">
+                                                <input type="email" maxlength="45" id="txtEmail" name="txtEmail" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="txtTelefono" class="bmd-label-floating">Tel&eacute;fono:</label>
-                                                <input type="text" class="form-control" id="txtTelefono" maxlength="15">
+                                                <input type="text" class="form-control" id="txtTelefono" name="txtTelefono" maxlength="15" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                
-                                  <div id="empresa">
-                                      <div class="form-row">
-                                          <div class="col-md-12">
-                                              <div class="form-group">
-                                                  <label for="txtRutContacto" class="bmd-label-floating">Rut de Contacto:</label>
-                                                  <input type="text" class="form-control" id="txtRutContacto" maxlength="10">
-                                              </div>
-                                          </div>
-                                      </div> 
-                                      <div class="form-row">
-                                          <div class="col-md-12">
-                                              <div class="form-group">
-                                                  <label for="txtNombreContacto" class="bmd-label-floating">Nombre de Contacto:</label>
-                                                  <input type="text" id="txtNombreContacto" class="form-control" maxlength="30">
-                                              </div>
-                                          </div>
-                                          <div class="col-md-12">
-                                              <div class="form-group">
-                                                  <label for="txtEmailContacto" class="bmd-label-floating">Email de Contacto:</label>
-                                                  <input type="text" id="txtEmailContacto" class="form-control" maxlength="45">
-                                              </div>
-                                          </div>
-                                          <div class="col-md-12">
-                                              <div class="form-group">
-                                                  <label for="txtTelefonoContacto" class="bmd-label-floating">Tel&eacute;fono de Contacto:</label>
-                                                  <input type="text" id="txtTelefonoContacto" class="form-control" maxlength="15">
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
+                                <div id="empresa">
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="txtRutContacto" class="bmd-label-floating">Rut de Contacto:</label>
+                                                <input type="text" class="form-control" id="txtRutContacto" name="txtRutContacto" maxlength="10" required>
+                                            </div> 
+                                        </div>
+                                    </div> 
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="txtNombreContacto" class="bmd-label-floating">Nombre de Contacto:</label>
+                                                <input type="text" id="txtNombreContacto" name="txtNombreContacto" class="form-control" maxlength="30" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="txtEmailContacto" class="bmd-label-floating">Email de Contacto:</label>
+                                                <input type="text" id="txtEmailContacto" name="txtEmailContacto" class="form-control" maxlength="45" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12"> 
+                                            <div class="form-group"> 
+                                                <label for="txtTelefonoContacto" class="bmd-label-floating">Tel&eacute;fono de Contacto:</label>
+                                                <input type="text" id="txtTelefonoContacto" name="txtTelefonoContacto" class="form-control" maxlength="15">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <a href="index.php" class="btn btn-secondary  ">volver </a>
@@ -133,7 +132,17 @@
         </div>
     </div>
                     
-                    
+        <footer class="footer " >
+                <div class="container-fluid">
+                    <nav class="text-center"> 
+                     <?php
+                        include 'php/base/footer-desa.php';
+                    ?>  
+                    </nav>
+                </div>
+        </footer>  
+                     
+    </div>
                     
         
     
@@ -154,10 +163,6 @@
                 </div>
             </div>
         </div>
-    
-            <?php
-                include ('php/base/footer.php');
-            ?>                
-        </div>
+                 
     </body>
 </html>

@@ -18,29 +18,52 @@ $(document).ready(function(){
         location.reload();
     })
     
-    $("#btnConfirmarCambioDatos").click(function() {
+    $("#btnConfirmarCambioMisDatos").click(function() {
         console.log("Actualizando información del usuario logeado.");
         $.ajax({
-            url: "php/controladores/PersonaActualizar.php",
+            url: "php/controladores/UsuarioModificar.php",
             method: 'PUT',
             dataType: 'json',
-            data: {'id' : $("#idusuariologin").val(),'nombres' : $("#nombresusuario").val(),
-                'apellidos' : $("#apellidosusuario").val(), 'email' : $("#emailusuario").val(),
-                'telefono' : $("#telefonousuario").val(), 'perfil' : $("#perfilusuariologin").val(),
+            data: {
+                'codigo' : $("#hUsuario").attr("attr-codigo"),
+                'rut' : $("#txtRutMD").val(),
+                'nombres' : $("#txtNombreMD").val(),
+                'direccion' : $("#txtDireccionMD").val(),
+                'tipo' : $("#hUsuario").attr("attr-tipo"),
                 'actualizarsesion' : "si"
             },
             success : function (data, textStatus, jqXHR){
-                resultadofinal = data;
-                if(resultadofinal["resultado"] == 0){
-                    $("#modalModificarDatosMensaje").modal('show');
+                arr = data;
+                if(arr.resultado.cant > 0){ 
+                    $("#modalMensaje .mensaje").html("se ha modificado la información.");
+                    $("#modalMensaje").modal('show');
+                    location.reload();
                 }else{
-                    $("#modalMensajeErrores p").html(resultadofinal.resultado);
-                    $("#modalMensajeErrores").modal('show');
+                    $("#modalMensaje .mensaje").html(arr.resultado);
+                    $("#modalMensaje").modal('show'); 
                 }
             }
 
         })  
-    })
+    });
+    
+    $("#btnGuardarClaveMD").click(function () {
+        console.log("Actualizando información del usuario logeado.");
+        
+        $.ajax({
+            url: "php/controladores/UsuarioActualizarClave.php",
+            method: "PUT",
+            dataType: 'json',
+            data: {
+               id : $("#hUsuario").attr("attr-codigo"),
+               clave: $("#txtNuevaClaveMD").val()
+            },
+            success: function (data, textStatus, jqXHR) {
+                arr = data;
+                console.log(arr.resultado); 
+            }
+        })
+    });
     
    
 });

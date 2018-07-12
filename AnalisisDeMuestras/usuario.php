@@ -4,42 +4,14 @@
 
     ?>
 <script src="assets/js/usuario.js" type="text/javascript"></script>
-        <div class="main-panel">
-            <div class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
-                <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <a class="navbar-brand">Usuarios</a> 
-                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalIngresarUsuario"> ingresar</button> 
-                    </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end">
-                        <form class="navbar-form">
-                            <span class="bmd-form-group">
-                                <div class="input-group no-border">
-                                    <input type="text" value class="form-control" placeholder="Buscar...">
-                                    <button type="button" class="btn btn-white btn-round btn-just-icon">
-                                        <i class="material-icons">search</i>
-                                        <div class="ripple-container"></div>
-                                    </button>
-                                </div>
-                            </span>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="content">
+        
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-primary">
                                     <h4>Usuarios ingresados</h4>
-                                    
+                                    <button class="btn btn-info btn-agregar" data-toggle="modal" data-target="#modalIngresarUsuario"><i class="material-icons"> group_add</i> </button>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -66,11 +38,7 @@
                     
                     
                 </div>
-            </div>
-            <?php
-             include ('php/base/footer.php');
-            ?>                
-        </div>
+            
 
 
 <!-- Modal -->
@@ -84,54 +52,55 @@
                 </button>
             </div>
             <div class="modal-body"> 
-                
-                <div class="form-group">
-                    <div class="form-row"> 
-                        <div class="col-md-12">
-                            <div class="form-group"> 
-                                <label for="txtRut" class="bmd-label-floating">Rut:</label>
-                                <input type="text" maxlength="10" id="txtRut" class="form-control">
+                <form id="formIngresoUsuarios">
+                    <div class="form-group">
+                        <div class="form-row"> 
+                            <div class="col-md-12">
+                                <div class="form-group"> 
+                                    <label for="txtRut" class="bmd-label-floating">Rut:</label>
+                                    <input type="text" maxlength="10" id="txtRut" name="txtRut" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="txtNombre" class="bmd-label-floating">Nombre:</label>
+                                    <input type="text" maxlength="45" id="txtNombre" name="txtNombre" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="txtDireccion" class="bmd-label-floating">Direcci&oacute;n:</label>
+                                    <input type="text" maxlength="45" id="txtDireccion" name="txtDireccion" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="selTipo" class="bmd-label-floating">Tipo de usuario:</label> 
+                                    <select name="selTipo" id="selTipo" name="selTipo" class="form-control" required>
+                                        <option value="">Seleccionar</option>
+                                        <option value="1">Administrador</option>
+                                        <option value="2">Receptor de muestras</option> 
+                                        <option value="3">Técnico de laboratorio</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="txtNombre" class="bmd-label-floating">Nombre:</label>
-                                <input type="text" maxlength="45" id="txtNombre" class="form-control">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="txtClave1" class="bmd-label-floating">Contrase&ntilde;a:</label>
+                                    <input type="password" id="txtClave1" name="txtClave1" class="form-control" maxlength="10" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="txtDireccion" class="bmd-label-floating">Direcci&oacute;n:</label>
-                                <input type="text" maxlength="45" id="txtDireccion" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="selTipo" class="bmd-label-floating">Tipo de usuario:</label> 
-                                <select name="selTipo" id="selTipo" class="form-control">
-                                    <option value="">Seleccionar</option>
-                                    <option value="1">Administrador</option>
-                                    <option value="2">Receptor de muestras</option> 
-                                    <option value="3">Técnico de laboratorio</option>
-                                </select>
-                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="txtClave2" class="bmd-label-floating">Repetir contrase&ntilde;a:</label>
+                                    <input type="password" id="txtClave2" name="txtClave2" class="form-control" maxlength="10" required> 
+                                </div>
+                            </div> 
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="txtClave1" class="bmd-label-floating">Contrase&ntilde;a:</label>
-                                <input type="password" id="txtClave1" class="form-control" maxlength="10">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="txtClave2" class="bmd-label-floating">Repetir contrase&ntilde;a:</label>
-                                <input type="password" id="txtClave2" class="form-control" maxlength="10">
-                            </div>
-                        </div> 
-                    </div>
-                </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button> 
@@ -151,41 +120,42 @@
                 </button>
             </div>
             <div class="modal-body"> 
-                
-                <div class="form-group">
-                    <div class="form-row"> 
-                        <div class="col-md-12">
-                            <div class="form-group"> 
-                                <label for="txtRutM" class="">Rut:</label>
-                                <input type="hidden" maxlength="10" id="txtCodigoM" >
-                                <input type="text" maxlength="10" id="txtRutM" class="form-control">
+                <form id="formModificarUsuarios">
+                    <div class="form-group">
+                        <div class="form-row"> 
+                            <div class="col-md-12">
+                                <div class="form-group"> 
+                                    <label for="txtRutM" class="">Rut:</label>
+                                    <input type="hidden" maxlength="10" id="txtCodigoM" >
+                                    <input type="text" maxlength="10" id="txtRutM" name="txtRutM" class="form-control" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="txtNombreM" class="">Nombre:</label>
-                                <input type="text" maxlength="45" id="txtNombreM" class="form-control">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="txtNombreM" class="">Nombre:</label>
+                                    <input type="text" maxlength="45" id="txtNombreM" name="txtNombreM" class="form-control" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="txtDireccionM" class="">Direcci&oacute;n:</label>
-                                <input type="text" maxlength="45" id="txtDireccionM" class="form-control">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="txtDireccionM" class="">Direcci&oacute;n:</label>
+                                    <input type="text" maxlength="45" id="txtDireccionM" name="txtDireccionM" class="form-control" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="selTipoM" class="">Tipo de usuario:</label> 
-                                <select name="selTipoM" id="selTipoM" class="form-control">
-                                    <option value="">Seleccionar</option>
-                                    <option value="1">Administrador</option>
-                                    <option value="2">Receptor de muestras</option> 
-                                    <option value="3">Técnico de laboratorio</option>
-                                </select>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="selTipoM" class="">Tipo de usuario:</label> 
+                                    <select name="selTipoM" id="selTipoM" name="selTipoM" class="form-control" required>
+                                        <option value="">Seleccionar</option>
+                                        <option value="1">Administrador</option>
+                                        <option value="2">Receptor de muestras</option> 
+                                        <option value="3">Técnico de laboratorio</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button> 
@@ -195,7 +165,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="btnBloquearUsuario" tabindex="-1" role="dialog" aria-labelledby="btnBloquearUsuario" aria-hidden="true">
+<div class="modal fade" id="modalBloquearUsuario" tabindex="-1" role="dialog" aria-labelledby="btnBloquearUsuario" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -209,7 +179,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button> 
-                <button type="button" class="btn btn-success" id="btnDesactivarUsuario">Desactivar</button>
+                <button type="button" class="btn btn-success" id="btnBloquearUsuario">Bloquear</button>
             </div>
         </div> 
     </div>
@@ -236,6 +206,6 @@
     </div>
 </div>
 
-
-    </body>
-</html>
+<?php
+    include ('php/base/footer.php');
+?>   

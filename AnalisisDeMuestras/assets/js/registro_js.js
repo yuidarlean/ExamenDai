@@ -10,6 +10,11 @@ $(document).ready(function (){
     })
     
     $("#btnRegistrar").click(function (){
+        console.log($("#frmRegistro").valid()); 
+        
+        if(!$("#frmRegistro").valid()){ 
+            return false;
+        }
         if ($("#opEmpresa").is(":checked")){
             console.log("Agregando nueva empresa con primer contacto");
             $.ajax({

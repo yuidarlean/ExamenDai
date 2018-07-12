@@ -1,77 +1,120 @@
 <?php
+require_once 'Usuario.class.php';
+
 Class AnalisisMuestras{
     private $idanalisismuestras;
     private $codigomuestra;
     private $fecharecepcion;
     private $temperaturamuestra;
     private $cantidadmuestra;
-    private $codigocliente;
-    private $codigoreceptor;
+    /**
+     *
+     * @var Usuario 
+     */
+    private $cliente;
     
-    public function __construct($idanalisismuestras,$codigomuestra,$fecharecepcion,$temperaturamuestra,$cantidadmuestra,$codigocliente,$codigoreceptor) {
-        $this->idanalisismuestras = $idanalisismuestras;
+    /**
+     *
+     * @var Usuario 
+     */
+    private $receptor;
+    
+    private $listaResultados; 
+    private $estado; 
+    
+    private $idTecLab; 
+            
+    
+    function __construct($idanalisismuestras, $codigomuestra, $fecharecepcion, $temperaturamuestra, $cantidadmuestra, Usuario $cliente, Usuario $receptor,  $estado) {
+        $this->idanalisismuestras = $idanalisismuestras; 
         $this->codigomuestra = $codigomuestra;
         $this->fecharecepcion = $fecharecepcion;
         $this->temperaturamuestra = $temperaturamuestra;
         $this->cantidadmuestra = $cantidadmuestra;
-        $this->codigocliente = $codigocliente;
-        $this->codigoreceptor = $codigoreceptor;
+        $this->cliente = $cliente;
+        $this->receptor = $receptor;
+        $this->estado = $estado; 
+        $this->idTecLab  = null;
     }
-    
-    public function getIdanalisismuestras() {
+
+    function getIdanalisismuestras() {
         return $this->idanalisismuestras;
     }
-    
-    public function getCodigomuestra() {
+
+    function getCodigomuestra() {
         return $this->codigomuestra;
     }
 
-    public function getFecharecepcion() {
+    function getFecharecepcion() {
         return $this->fecharecepcion;
     }
 
-    public function getTemperaturamuestra() {
+    function getTemperaturamuestra() {
         return $this->temperaturamuestra;
     }
 
-    public function getCantidadmuestra() {
+    function getCantidadmuestra() {
         return $this->cantidadmuestra;
     }
 
-    public function getCodigocliente() {
-        return $this->codigocliente;
+    function getCliente() {
+        return $this->cliente;
     }
 
-    public function getCodigoreceptor() {
-        return $this->codigoreceptor;
-    }
-
-    public function setIdanalisismuestras($idanalisismuestras) {
-        $this->idanalisismuestras = $idanalisismuestras;
+    function getReceptor() {
+        return $this->receptor;
     }
     
-    public function setCodigomuestra($codigomuestra){
+    function getListaResultados() {
+        return $this->listaResultados;
+    }
+    
+    function getEstado() {
+        return $this->estado;
+    }
+    
+    function getIdTecLab() {
+        return $this->idTecLab;
+    }
+
+    function setIdanalisismuestras($idanalisismuestras) {
+        $this->idanalisismuestras = $idanalisismuestras;
+    }
+
+    function setCodigomuestra($codigomuestra) {
         $this->codigomuestra = $codigomuestra;
     }
 
-    public function setFecharecepcion($fecharecepcion) {
+    function setFecharecepcion($fecharecepcion) {
         $this->fecharecepcion = $fecharecepcion;
     }
 
-    public function setTemperaturamuestra($temperaturamuestra) {
+    function setTemperaturamuestra($temperaturamuestra) {
         $this->temperaturamuestra = $temperaturamuestra;
     }
 
-    public function setCantidadmuestra($cantidadmuestra) {
+    function setCantidadmuestra($cantidadmuestra) {
         $this->cantidadmuestra = $cantidadmuestra;
     }
 
-    public function setCodigocliente($codigocliente) {
-        $this->codigocliente = $codigocliente;
+    function setCliente(Usuario $cliente) {
+        $this->cliente = $cliente;
     }
 
-    public function setCodigoreceptor($codigoreceptor) {
-        $this->codigoreceptor = $codigoreceptor;
+    function setReceptor(Usuario $receptor) {
+        $this->receptor = $receptor;
+    }
+
+    function setListaResultados($listaResultados) {  
+        $this->listaResultados = $listaResultados;
+    }
+
+    function setEstado($estado) {
+        $this->estado = $estado;
+    }
+
+    function setIdTecLab($idTecLab) {
+        $this->idTecLab = $idTecLab;
     }
 
     

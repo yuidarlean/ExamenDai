@@ -12,7 +12,10 @@ Class UsuarioDAO{
     }
     
     public function ObtenerClientes($filtro){
-        $query = "select codigoUsuario, rutUsuario, nombreUsuario, estado from usuario where (tipoUsuario=4 or tipoUsuario=5) and (UPPER(rutUsuario) LIKE UPPER(concat(?,'%')) or codigoUsuario = ?)";
+        $query = " select codigoUsuario, rutUsuario, nombreUsuario, direccionUsuario, estado"
+                . " from usuario "
+                . " where (tipoUsuario=4 or tipoUsuario=5) and (UPPER(rutUsuario) LIKE UPPER(concat(?,'%')) or codigoUsuario = ?)";
+        
         $preparedStatement = $this->conexion->prepare($query);
         if ($preparedStatement !== false){
             $preparedStatement->bindParam(1,$filtro);
@@ -24,11 +27,10 @@ Class UsuarioDAO{
         }
         $arUser = array();
         foreach($preparedStatement->fetchAll(PDO::FETCH_ASSOC) as $row){
-            $u = new Usuario($row["codigoUsuario"], 
-                    $row["rutUsuario"], 
+            $u = new Usuario($row["codigoUsuario"], $row["rutUsuario"], 
                     0, 
                     $row["nombreUsuario"], 
-                    0, 
+                    $row["direccionUsuario"], 
                     0, $row["estado"]);
             array_push($arUser, $u);
         }
@@ -150,7 +152,7 @@ Class UsuarioDAO{
             
             $c = $preparedStatement->rowCount(); 
            
-            return $c; 
+            return $c;  
             
         }else{
             throw new Exception ('no se pudo prepara la consulta a la base de datos: '.$this->conexion->$error);
@@ -216,6 +218,36 @@ Class UsuarioDAO{
      * 
      * @param Usuario $data
      */
+    public function modificarClaveUsuario($data){
+        $query = "UPDATE usuario SET passwordUsuario = ? " 
+                . " WHERE codigoUsuario = ?";
+        $respuesta = 0; 
+        
+        $preparedStatement = $this->conexion->prepare($query);
+        if ($preparedStatement !== false){
+            
+            $clave = password_hash($data->getPasswordUsuario(), PASSWORD_DEFAULT); 
+            $preparedStatement->bindParam(1, $clave);  
+            
+            $codigo = $data->getCodigoUsuario(); 
+            $preparedStatement->bindParam(2, $codigo);  
+            
+            $preparedStatement->execute();  
+            
+            $c = $preparedStatement->rowCount(); 
+           
+            return $c; 
+            
+        }else{
+            throw new Exception ('no se pudo prepara la consulta a la base de datos: '.$this->conexion->$error);
+        }
+        return $respuesta; 
+    }
+    
+    /**
+     * 
+     * @param Usuario $data
+     */
     public function ObtenerUsuario($data){
         $arUser = array();
         
@@ -224,8 +256,18 @@ Class UsuarioDAO{
                 . " FROM usuario u"
                 . " LEFT JOIN tipousuario tu on tu.codigoTipo = u.tipoUsuario "
                 . " ";
-        $query .= " where u.tipoUsuario < 4 ";
         
+        switch ($data->getTipoUsuario()->getCodigoTipo()) {
+            case "-1":
+                $query .= " where u.tipoUsuario < 4 ";
+                break;
+            case "-2":
+                $query .= " where u.tipoUsuario > 3 ";
+                break;
+            default:
+                $query .= " where 1=1 ";
+                break;
+        }
         $query2 = "";
         if($data->getCodigoUsuario() != null){
             $query2 .= " u.codigoUsuario = ? ";

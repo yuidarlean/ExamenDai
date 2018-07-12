@@ -3,82 +3,7 @@ $(document).ready(function (){
     var idDesactivar = 0;
     var idActivar = 0;
     
-    $("#btnGuardarUsuario").on("click", function () {
-       
-        if(!$("#formIngresoUsuarios").valid()){
-            return false;  
-        }
-       
-        txtrut = $("#txtRut").val();
-        txtnombre = $("#txtNombre").val();
-        txtdireccion = $("#txtDireccion").val();
-        txtclave = $("#txtClave1").val();
-        seltipo = $("#selTipo").val(); 
-       
-        $.ajax({
-            url: "php/controladores/UsuarioRegistrar.php",
-            method: "POST",
-            dataType: 'json',
-            data: {
-                rut: txtrut,
-                nombre: txtnombre,
-                direccion: txtdireccion,
-                password: txtclave,
-                tipo: seltipo
-            },
-            success: function (data, textStatus, jqXHR) {
-                arr = data;
-                if(arr.resultado.codigoUsuario > 0 ){
-                    $("#modalMensaje .mensaje").html("se ha ingresado el usuario.");
-                    $("#modalMensaje").modal('show');
-                    $("#modalIngresarUsuario").modal("hide");
-                    cargarLista() 
-                }else{
-                    $("#modalMensaje .mensaje").html(arr.resultado);
-                    $("#modalMensaje").modal('show');
-                    
-                }
-                console.log(data); 
-            }
-        })
-    });
     
-    $("#btnModificarUsuario").on("click", function () {
-        if(!$("#formModificarUsuarios").valid()){
-            return false;  
-        }
-        
-        txtrut = $("#txtRutM").val();
-        txtnombre = $("#txtNombreM").val();
-        txtdireccion = $("#txtDireccionM").val();
-        seltipo = $("#selTipoM").val(); 
-        txtcodigo = $("#txtCodigoM").val(); 
-        
-        $.ajax({
-            url: "php/controladores/UsuarioModificar.php",
-            method: "PUT", 
-            dataType: 'json',
-            data: {
-                rut: txtrut,
-                nombres: txtnombre,
-                direccion: txtdireccion,
-                codigo: txtcodigo,
-                tipo: seltipo
-            },
-            success: function (data, textStatus, jqXHR) {
-                arr = data;
-                if(arr.resultado.cant > 0){
-                    $("#modalMensaje .mensaje").html("se ha modificado la información.");
-                    $("#modalMensaje").modal('show');
-                    $("#modalModificarUsuario").modal("hide");
-                    cargarLista();
-                }else{
-                    $("#modalMensaje .mensaje").html(arr.resultado);
-                    $("#modalMensaje").modal('show'); 
-                }
-            }
-        })
-    })
     $("#btnBloquearUsuario").on("click", function () {
         $.ajax({
             url: "php/controladores/UsuarioBloquear.php",
@@ -91,7 +16,7 @@ $(document).ready(function (){
                 console.log(data); 
                 arr = data;
                 if(arr.resultado > 0){
-                    $("#modalMensaje .mensaje").html("El usuario ha sido bloquedo.");
+                    $("#modalMensaje .mensaje").html("El cliente ha sido bloquedo.");
                     $("#modalMensaje").modal('show');
                     
                     $("#modalBloquearUsuario").modal("hide");
@@ -115,7 +40,7 @@ $(document).ready(function (){
                 console.log(data); 
                 arr = data;
                 if(arr.resultado > 0){
-                    $("#modalMensaje .mensaje").html("El usuario ha sido activado.");
+                    $("#modalMensaje .mensaje").html("El cliente ha sido activado.");
                     $("#modalMensaje").modal('show');
                     $("#modalActivarUsuario").modal("hide"); 
                     cargarLista();
@@ -133,7 +58,7 @@ $(document).ready(function (){
            method: "GET",
             dataType: 'json',
             data: {
-                tipo : '-1' 
+                tipo : '-2'
             },
             success: function (data, textStatus, jqXHR) {
                 arr = data;
@@ -148,7 +73,6 @@ $(document).ready(function (){
                         b += '<td>'+value.tipoUsuario.nombresTipo +'</td>';
                         b += '<td>'+(value.estado == 1? 'Activado': 'Bloqueado') +'</td>';
                         b += '<td>';
-                        b += '<button class="modificar btn btn-info" attr-index="'+index+'"><i class="material-icons">create</i></button>'; 
                         if(index > 0){ 
                             if(value.estado == 1){
                                 b += '<button class="desactivar btn btn-danger" attr-index="'+index+'" ><i class="material-icons">block</i></button>'; 
@@ -188,9 +112,9 @@ $(document).ready(function (){
         });
     }
     
-    function inicio(){
+    function inicio(){ 
         $("ul.nav > li").removeClass("active");
-        $("#menu-usuario").addClass("active");
+        $("#menu-cliente").addClass("active");
         cargarLista();
     }
     inicio();

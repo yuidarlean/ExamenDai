@@ -1,68 +1,75 @@
 <?php
+require_once 'AnalisisMuestras.class.php';
+require_once 'Usuario.class.php'; 
+require_once 'TipoAnalisis.class.php';  
+
 Class ResultadoAnalisis{
-    private $idTipoAnalisis;
-    private $idAnalisisMuestras;
+    
+    private $idAnalisis;
+    /**
+     *
+     * @var TipoAnalisis 
+     */
+    private $tipoAnalisis;
+    
     private $fecharegistro;
     private $ppm;
-    private $estado;
-    private $codigoempleadoanalista;
     
-    public function __construct($idTipoAnalisis, $idAnalisisMuestras, $fecharegistro, $ppm, $estado, $codigoempleadoanalista) {
-        $this->idTipoAnalisis = $idTipoAnalisis;
-        $this->idAnalisisMuestras = $idAnalisisMuestras;
+    /**
+     *
+     * @var Usuario 
+     */
+    private $empleadoanalista;
+    
+    function __construct($idAnalisis, TipoAnalisis $tipoAnalisis, $fecharegistro, $ppm, Usuario $empleadoanalista) { 
+        $this->idAnalisis = $idAnalisis;
+        $this->tipoAnalisis = $tipoAnalisis;
         $this->fecharegistro = $fecharegistro;
         $this->ppm = $ppm;
-        $this->estado = $estado;
-        $this->codigoempleadoanalista = $codigoempleadoanalista;
+        $this->empleadoanalista = $empleadoanalista;
+    }
+ 
+    function getIdAnalisis() {
+        return $this->idAnalisis;
     }
 
-    public function getIdTipoAnalisis() {
-        return $this->idTipoAnalisis;
+    function getTipoAnalisis() {
+        return $this->tipoAnalisis;
     }
 
-    public function getIdAnalisisMuestras() {
-        return $this->idAnalisisMuestras;
-    }
-
-    public function getFecharegistro() {
+    function getFecharegistro() {
         return $this->fecharegistro;
     }
 
-    public function getPpm() {
+    function getPpm() {
         return $this->ppm;
     }
 
-    public function getEstado() {
-        return $this->estado;
+    function getEmpleadoanalista() {
+        return $this->empleadoanalista;
     }
 
-    public function getCodigoempleadoanalista() {
-        return $this->codigoempleadoanalista;
+    function setIdAnalisis($idAnalisis) {
+        $this->idAnalisis = $idAnalisis;
     }
 
-    public function setIdTipoAnalisis($idTipoAnalisis) {
-        $this->idTipoAnalisis = $idTipoAnalisis;
+    function setTipoAnalisis(TipoAnalisis $tipoAnalisis) {
+        $this->tipoAnalisis = $tipoAnalisis;
     }
 
-    public function setIdAnalisisMuestras($idAnalisisMuestras) {
-        $this->idAnalisisMuestras = $idAnalisisMuestras;
-    }
-
-    public function setFecharegistro($fecharegistro) {
+    function setFecharegistro($fecharegistro) {
         $this->fecharegistro = $fecharegistro;
     }
 
-    public function setPpm($ppm) {
+    function setPpm($ppm) {
         $this->ppm = $ppm;
     }
 
-    public function setEstado($estado) {
-        $this->estado = $estado;
+
+    function setEmpleadoanalista(Usuario $empleadoanalista) {
+        $this->empleadoanalista = $empleadoanalista;
     }
 
-    public function setCodigoempleadoanalista($codigoempleadoanalista) {
-        $this->codigoempleadoanalista = $codigoempleadoanalista;
-    }
 
 
 }

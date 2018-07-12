@@ -71,11 +71,15 @@
                         </div>
                     </div>
                     
-                </div>
-            </div>
-            <?php
-             include ('php/base/footer.php');
-            ?>                
         </div>
+            <footer class="footer " style="position: fixed; bottom: 0px; width: 100%;">
+                <div class="container-fluid">
+                    <nav class="text-center"> 
+                     <?php
+                        include 'php/base/footer-desa.php';
+                    ?>  
+                    </nav>
+                </div>
+            </footer>               
     </body>
 </html>

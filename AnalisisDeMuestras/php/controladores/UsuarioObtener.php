@@ -10,6 +10,11 @@ if ($_SERVER['REQUEST_METHOD']=='GET'){
 function usuarioObtener(){
     
     $tipoUsuario = new TipoUsuario(null, null);
+    
+    if(isset($_GET["tipo"]) && $_GET["tipo"] != null){
+        $tipoUsuario->setCodigoTipo($_GET["tipo"]); 
+    }
+     
     $u = new Usuario(null, null, null, null, null, $tipoUsuario, null);
     
     $udao = new UsuarioDAO();
