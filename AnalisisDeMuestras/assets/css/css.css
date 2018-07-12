@@ -37,3 +37,9 @@
 .form-group label.error{
     color: red;
 }
+
+.ct-chart{
+    width: 100% !important;  
+    height: 300px; 
+    display: none;
+} 

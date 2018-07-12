@@ -71,8 +71,8 @@
             </div>
             <div class="modal-body">
                 
-                <div id="ct-chart"> 
-                    
+                <div class="chart">
+                    <div class="ct-chart ct-golden-section"> </div>
                 </div>
                 
                 

@@ -1,5 +1,6 @@
 $(document).ready(function (){
-    
+    var arrlabels = [];
+    var arrseries = [];  
     $("#btnBuscar").on("click", function() {
         cargarListaMuestras();
     });
@@ -63,9 +64,15 @@ $(document).ready(function (){
                     
                     $(".verResultado").on("click", function () {
                         var index = $(this).attr("attr-index");
+                        arrlabels = [];
+                        arrseries =[];
+                        $.each(arrMP[index]["listaResultado"], function (index, value) {
+                            arrlabels.push(value.tipoAnalisis.nombre + ' ('+value.ppm+')');
+                            arrseries.push(value.ppm);
+                        })
+                        
                         $("#modalRevisarAnalisis").modal("show");
-                        $(".ct-char").html();
-                       
+                        
                     });
                     
                 }else{
@@ -74,6 +81,16 @@ $(document).ready(function (){
             }
         })
     }
+    
+    $('#modalRevisarAnalisis').on('shown.bs.modal', function (e) {
+        $('.ct-chart').fadeIn();
+        new Chartist.Bar('.ct-chart', {
+            labels: arrlabels,
+            series: arrseries
+        }, {
+            distributeSeries: true
+        }); 
+    })
     
     function inicio(){
         $("ul.nav > li").removeClass("active");
