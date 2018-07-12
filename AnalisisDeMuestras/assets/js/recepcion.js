@@ -117,7 +117,6 @@ $(document).ready(function(){
     function inicio(){
         $("ul.nav > li").removeClass("active");
         $("#menu-recepcion").addClass("active");
-        $("#txtFechaRecepcion").datepicker();
     } 
     inicio();
 });

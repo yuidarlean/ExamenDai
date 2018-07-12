@@ -13,14 +13,8 @@ function ObtenerResAnalisis(){
     $u = new Usuario(null, null, null, null, null, new TipoUsuario(null, null), null);
     $receptor = new Usuario(null, null, null, null, null, new TipoUsuario(null, null), null);
     
-    
-    
     if(isset($_GET["clienteId"]) && $_GET["clienteId"] != null){
         $u->setCodigoUsuario($_GET["clienteId"]);
-    }
-    
-    if(isset($_GET["tecLabo"]) && $_GET["tecLabo"] != null){
-        $detalle->setIdTecLab($_GET["tecLabo"]);
     }
     
     if(isset($_GET["clienteRut"]) && $_GET["clienteRut"] != null){
@@ -42,6 +36,11 @@ function ObtenerResAnalisis(){
         $detalle->setCodigomuestra($_GET["codigoMuestra"]); 
     }
     
+    if(isset($_GET["tecLabo"]) && $_GET["tecLabo"] != null){
+        $detalle->setIdTecLab($_GET["tecLabo"]);
+    }
+    
+
     $arr = $t->Obtener($detalle);
     
     //print_r($arr); 
