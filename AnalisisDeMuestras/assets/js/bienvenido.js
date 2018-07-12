@@ -40,9 +40,13 @@ $(document).ready(function (){
                             h += '<td>' + value.cliente.rutUsuario + '</td>';
                             h += '<td>' + value.cliente.nombreUsuario + '</td>';
                             h += '<td>' + value.codigomuestra + '</td>';
-                            h += '<td>' + value.fecharecepcion +'</td>';
+                            h += '<td>' + value.fecharecepcion +'</td>';                            
                             h += '<td>' + value.receptor.nombreUsuario +'</td>';
-                            h += '<td>' + (fechaAnalisis == '0000-00-00' ?'': fechaAnalisis ) +'</td>';
+                            if(fechaAnalisis!==null){
+                                h += '<td>' + (fechaAnalisis == '0000-00-00' ?'': fechaAnalisis ) +'</td>';                            
+                            }else{
+                                h += '<td></td>';
+                            }
                             h += '<td>' + (lb == null? '': lb)  +'</td>';
                             switch (value.estado) {
                                 case "2":
