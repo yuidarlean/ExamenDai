@@ -89,6 +89,12 @@ $(document).ready(function (){
             series: arrseries
         }, {
             distributeSeries: true
+        }).on('draw',function(data){
+            if(data.type === 'bar'){
+                data.element.attr({
+                    style: 'stroke-width: 60px'
+                });
+            }
         }); 
     })
     
