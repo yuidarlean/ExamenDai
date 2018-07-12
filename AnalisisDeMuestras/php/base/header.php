@@ -13,7 +13,7 @@ include_once 'php/modelo/Usuario.class.php';
         <link rel="stylesheet" href="assets/css/font-awesome.min.css"> 
         
         <link rel="stylesheet" type="text/css" href="assets/css/css.css" />
-        <!--link rel="stylesheet" type="text/css" href="assets/css/chartist.css" /--> 
+        <link rel="stylesheet" type="text/css" href="assets/css/chartist.css">  
         <!--   Core JS Files   -->
         <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
         <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
