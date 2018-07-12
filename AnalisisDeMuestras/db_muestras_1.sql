@@ -33,7 +33,7 @@ USE `db_muestras`;
 DROP TABLE IF EXISTS `analisismuestras`;
 CREATE TABLE `analisismuestras` (
   `idAnalisisMuestras` int(11) NOT NULL,
-  `fechaRecepcion` date NOT NULL,
+  `fechaRecepcion` date NULL, 
   `temperaturaMuestra` decimal(3,1) NOT NULL,
   `cantidadMuestra` int(11) NOT NULL,
   `codigoUsuarioCliente` int(11) DEFAULT NULL,

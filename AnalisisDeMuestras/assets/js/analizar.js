@@ -5,6 +5,7 @@ $(document).ready(function () {
         lista = {};
         lista.idAnalisis = $("#lblMuestra").attr("attr-id");
         lista.resultados = [];
+        b = true;
         $.each($("#tabla-real-analisis .grilla tr"), function (index, value) {
             d = {};
             inpt = $(this).find("input");  
@@ -13,36 +14,36 @@ $(document).ready(function () {
                 $("#modalMensaje .mensaje").html(lbl.html()+" no tiene información ."); 
                 $("#modalMensaje").modal('show');
                 
-                return false; 
-            }
+                b = false; 
+            } 
             
             d["ppm"] = inpt.val();
             
             d["idtipoanalisis"] = inpt.attr("attr-id-ta");
             lista.resultados.push(d);  
-        });
-        
-        return false;
-        console.log(lista); 
-        $.ajax({
-            url : "php/controladores/ResultadoAnalisisActualizar.php",
-            method : "PUT",
-            dataType: 'json',
-            data:  {"data" : lista} ,    
-            success: function (data, textStatus, jqXHR) {
-                arr = data;
-                if(arr.resultado.cantAM > 0){
-                    $("#modalMensaje .mensaje").html("se ha guardado el analisis realizado.");
-                    $("#modalMensaje").modal('show');
-                    
-                    $("#modalRealizarAnalisis").modal("hide");
-                    limpiarModalAnalisis();
-                    obtenerLista();
-                }else{
-                    
+        }); 
+        if(b){
+            console.log(lista); 
+            $.ajax({
+                url : "php/controladores/ResultadoAnalisisActualizar.php",
+                method : "PUT",
+                dataType: 'json',
+                data:  {"data" : lista} ,    
+                success: function (data, textStatus, jqXHR) {
+                    arr = data;
+                    if(arr.resultado.cantAM > 0){
+                        $("#modalMensaje .mensaje").html("se ha guardado el analisis realizado.");
+                        $("#modalMensaje").modal('show');
+
+                        $("#modalRealizarAnalisis").modal("hide");
+                        limpiarModalAnalisis();
+                        obtenerLista();
+                    }else{
+
+                    }
                 }
-            }
-        });
+            });
+        }
         
     });
     
