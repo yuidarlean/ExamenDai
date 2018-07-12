@@ -133,7 +133,7 @@ INSERT INTO `tipousuario` (`codigoTipo`, `nombresTipo`) VALUES
 (1, 'Administrador'),
 (2, 'Receptor de muestras'),
 (3, 'Técnico de laboratorio'),
-(4, 'Cliente Natrual'),
+(4, 'Cliente Natural'), 
 (5, 'Cliente Empresa');
 
 -- --------------------------------------------------------
